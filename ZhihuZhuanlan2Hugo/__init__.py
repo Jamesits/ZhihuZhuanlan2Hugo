@@ -55,7 +55,7 @@ def convert(column: str, destination_folder_path: str) -> None:
         }, markdownify(article["content"]))
 
 
-def main(*args):
+def main(*args) -> None:
     if len(args) < 2:
         logger.fatal("Too few arguments")
 

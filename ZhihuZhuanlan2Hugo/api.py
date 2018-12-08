@@ -5,14 +5,14 @@ from ZhihuZhuanlan2Hugo.utils import *
 user_agent = "ZhihuZhuanlan2Hugo.py (+https://github.com/Jamesits/ZhihuZhuanlan2Hugo"
 
 
-def get_column_metadata(slug: str) -> object:
+def get_column_metadata(slug: str) -> typing.Dict:
     r = retry(requests.get, 3, "https://zhuanlan.zhihu.com/api2/columns/%s" % slug, headers={
         'User-Agent': user_agent,
     })
     return r.json()
 
 
-def get_column_article_list(slug: str, limit: int, offset: int) -> object:
+def get_column_article_list(slug: str, limit: int, offset: int) -> typing.Dict:
     r = retry(requests.get, 3, "https://zhuanlan.zhihu.com/api2/columns/%s/articles" % slug, headers={
         'User-Agent': user_agent,
     }, params={
@@ -23,7 +23,7 @@ def get_column_article_list(slug: str, limit: int, offset: int) -> object:
     return r.json()
 
 
-def get_article(id: int) -> object:
+def get_article(id: int) -> typing.Dict:
     r = retry(requests.get, 3, "https://zhuanlan.zhihu.com/api2/posts/%d" % id, headers={
         'User-Agent': user_agent,
     })
