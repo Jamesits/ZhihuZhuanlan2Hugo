@@ -1,0 +1,35 @@
+admin_closed_comment: false
+author:
+  avatar_url: https://pic1.zhimg.com/v2-77acb5043344a66c89735d8fc03bcd66_l.jpg
+  badge: []
+  gender: 1
+  headline: 好忙啊
+  id: 8e4d0fedc48068f5fb69da994751d27a
+  is_followed: false
+  is_following: false
+  name: imbushuo
+  type: people
+  url: /people/8e4d0fedc48068f5fb69da994751d27a
+  url_token: imbushuo
+  user_type: people
+comment_count: 2
+comment_permission: all
+created: 1542458948
+excerpt: <img src="https://pic3.zhimg.com/v2-89fc506c3e610a887db8738da7c6b88e_200x112.jpg"
+  data-caption="" data-size="normal" data-rawwidth="2304" data-rawheight="1320" data-watermark="watermark"
+  data-original-src="v2-89fc506c3e610a887db8738da7c6b88e" data-watermark-src="v2-6aa34561aec9e58628a887dd238829cc"
+  data-private-watermark-src="" class="origin_image inline-img zh-lightbox-thumb"
+  data-original="https://pic3.zhimg.com/v2-89fc506c3e610a887db8738da7c6b88e_r.jpg">如图。Linux
+  社区那边也有人提到过类似的情况。(我在想 kernel_task 日常发疯是不是也和这有关，但是我对 XNU 调试和 Profile 不熟）
+excerpt_title: ''
+id: 50185298
+image_url: ''
+is_labeled: false
+state: published
+title: 水果家可能已经没有会正确写 ACPI 的人了
+title_image: ''
+type: article
+updated: 1542458948
+url: https://zhuanlan.zhihu.com/p/50185298
+voteup_count: 11
+voting: 0

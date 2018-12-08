@@ -1,0 +1,207 @@
+admin_closed_comment: false
+author:
+  avatar_url: https://pic1.zhimg.com/v2-77acb5043344a66c89735d8fc03bcd66_l.jpg
+  badge: []
+  gender: 1
+  headline: 好忙啊
+  id: 8e4d0fedc48068f5fb69da994751d27a
+  is_followed: false
+  is_following: false
+  name: imbushuo
+  type: people
+  url: /people/8e4d0fedc48068f5fb69da994751d27a
+  url_token: imbushuo
+  user_type: people
+can_tip: false
+column:
+  accept_submission: true
+  articles_count: 61
+  author:
+    avatar_url: https://pic3.zhimg.com/4ad478c148b4e9ccbe312cfa53402b0f_l.jpg
+    gender: 1
+    headline: 已而！已而！
+    id: 72036ce918812daac46c75d7cac1e7d2
+    is_followed: false
+    is_following: false
+    name: James Swineson
+    type: people
+    url: /people/72036ce918812daac46c75d7cac1e7d2
+    url_token: james-swineson
+    user_type: people
+  can_manage: false
+  comment_permission: all
+  created: 1394632777
+  description: ''
+  followers: 2036
+  id: computers
+  image_url: https://pic2.zhimg.com/008a19032e74677b9dcc1946e520b63f_b.jpg
+  intro: ''
+  is_following: false
+  title: About Computers
+  type: column
+  updated: 1438759721
+  url: https://zhuanlan.zhihu.com/computers
+  url_token: computers
+comment_count: 2
+comment_permission: all
+commercial_info:
+  is_commercial: false
+content: "<p><a href=\"https://zhuanlan.zhihu.com/p/34572676\" class=\"internal\"\
+  >这是上一篇文章的续集</a>。总的来说，差异不是特别大，但是也有一些细节上的不同。</p><figure><noscript><img src=\"https://pic1.zhimg.com/v2-d2c3e1afb48c04e8e19d64cc269f8814_b.jpg\"\
+  \ data-size=\"normal\" data-rawwidth=\"1711\" data-rawheight=\"1019\" class=\"origin_image\
+  \ zh-lightbox-thumb\" width=\"1711\" data-original=\"https://pic1.zhimg.com/v2-d2c3e1afb48c04e8e19d64cc269f8814_r.jpg\"\
+  ></noscript><img src=\"data:image/svg+xml;utf8,&lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='1711'%20height='1019'&gt;&lt;/svg&gt;\"\
+  \ data-size=\"normal\" data-rawwidth=\"1711\" data-rawheight=\"1019\" class=\"origin_image\
+  \ zh-lightbox-thumb lazy\" width=\"1711\" data-original=\"https://pic1.zhimg.com/v2-d2c3e1afb48c04e8e19d64cc269f8814_r.jpg\"\
+  \ data-actualsrc=\"https://pic1.zhimg.com/v2-d2c3e1afb48c04e8e19d64cc269f8814_b.jpg\"\
+  ><figcaption>这是这只 $300 的手机。价格刚刚从美亚截图的</figcaption></figure><p>众所周知，Windows Phone\
+  \ 8 和 Windows 10 Mobile 没有发布过正式的 AArch64 版本。所以即使在 Lumia 950, 950XL, HP Elite x3\
+  \ 之类的设备上，他们也是以 AArch32 模式运行的（向下兼容）。</p><p>从具体实现细节说，Snapdragon 808 和 810 以 AArch32\
+  \ 模式启动第一个核心并初始化（但是 TZ 是 AArch64 的），根据需求通过 Secure Monitor Call 来切换 PL1/EL1 的 bitness。Snapdragon\
+  \ 820 以 AArch64 模式启动第一个核心，根据需求在启动 Windows Phone UEFI 时进入 AArch32 的 EL1。</p><p><a\
+  \ href=\"http://link.zhihu.com/?target=https%3A//github.com/imbushuo/lk\" class=\"\
+  \ wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">所以在给 Lumia 移植了 LK\
+  \ 之后</a>，我们就有相对充足的 EL1 控制权（在高通设备上 EL2 和 EL3 是不受我们控制的）。因此我们也可以载入我们自己的 TianoCore Payload\
+  \ 到内存，然后通过 SMC 切换 bitness 并执行。<a href=\"http://link.zhihu.com/?target=https%3A//github.com/imbushuo/boot-shim\"\
+  \ class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">具体怎么从 Boot\
+  \ Manager 启动 LK，看这里。</a></p><p><b>UEFI 相关</b></p><p>首先在 ARM 上 UEFI 的初始化工作比 x86 通常要小很多，因为\
+  \ UEFI 一般被作为一个 Secondary Bootloader 被载入，载入的时候，DDR 训练已经完成了，内存可以直接拿来用了。而且这些嵌入式设备有很多硬编码的参数。</p><p>剩下的内容并不是特别麻烦，<a\
+  \ href=\"http://link.zhihu.com/?target=http%3A//efidroid.org/\" class=\" wrap external\"\
+  \ target=\"_blank\" rel=\"nofollow noreferrer\">EFIDroid</a> 项目提供了很多不错的参考实现，直接拿来用就好。不过我重写了内存初始化（其实是\
+  \ MMU 和 HOB）部分来适应 Windows 的启动要求。</p><p>USB 还没来得及做，但是都是 Synposys 的 USB IP，可以参考 RaspberryPiPkg\
+  \ 里的相关内容。估计 Clock 部分要和 EFIDroid 的驱动做集成。</p><p><a href=\"http://link.zhihu.com/?target=https%3A//github.com/imbushuo/Lumia950XLPkg\"\
+  \ class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">一个正在进行中的\
+  \ Lumia 950 XL 参考 UEFI 实现看这里。</a>目前代码还很乱。</p><p><br></p><p><b>UART</b></p><p>很不幸\
+  \ Lumia 950XL 没有外置的（唯一一个接了蓝牙）。所以我们用屏幕当串口来诊断一些问题。我把这个选项做成了一个 PCD，在我的实现发布里默认没开。其实其他\
+  \ Lumia 非 x50 代的都有能用的 UART 测试点，使用的是 1.8V UART（高通常见）。</p><p><br></p><p><b>多核启动</b></p><p>可以先看一下老狼的这篇文章，对多核启动有一个了解：<a\
+  \ href=\"https://zhuanlan.zhihu.com/p/31398178\" class=\"internal\">兄弟阋墙，CPU内核们是如何争当老大的？</a></p><p>在\
+  \ ARM 平台上，目前通行的几种多核启动办法如下：</p><ul><li>固件初始化所有核心，交给 OS 时全部可用（好像没看到谁用了）</li><li>固件启动在\
+  \ BSP 核心，固件在 DXE 阶段把所有核心上电并定向到指定内存地址并 Hold（其实是执行一段代码），等待 OS 启动后通过 GIC 或其他手段通知核心启动并开始运作。这种办法也称之为\
+  \ Parking。除了 Snapdragon 820 外的 Windows Phone, Windows RT 和 Windows 10 IoT 设备用的是这种办法，<a\
+  \ href=\"http://link.zhihu.com/?target=https%3A//acpica.org/sites/acpica/files/MP%2520Startup%2520for%2520ARM%2520platforms.docx\"\
+  \ class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">具体实现规范参考这份文件</a>。</li><li>固件启动在\
+  \ BSP 核心，将其他核心初始化到某个预期状态（或者不管），OS 启动后通过 PSCI 来启动核心。Snapdragon 820 的 Windows Phone\
+  \ 和 Windows 10 ARM 平板用的是这种办法。<a href=\"http://link.zhihu.com/?target=http%3A//infocenter.arm.com/help/topic/com.arm.doc.den0022d/Power_State_Coordination_Interface_PDD_v1_1_DEN0022D.pdf\"\
+  \ class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">具体实现规范参考这份文件。</a></li></ul><p>第二种办法在核心运行的\
+  \ Hold 伪代码如下：</p><div class=\"highlight\"><pre><code class=\"language-text\"><span></span>Hold:\n\
+  \   等一个中断过来，没有来就睡觉\n   判断一下是不是我要起床了（检查核心 ID），是的话跳转到指定内存地址并继续执行\n   不是我起床，回到 Hold\
+  \ 重复\n</code></pre></div><p>第三种办法直接向 EL2/3 发送 Hypervisor Call 或者 Secure Monitor\
+  \ Call。虽然 Lumia 950 XL 所用的 Snapdragon 810 没有标注 PSCI 支持，但是实际上支持了一部分 PSCI 内容。PSCI\
+  \ CPU_ON 是没问题的，但是其他电源操作还是需要通过 SPMI 给 PMIC 发指令。所以我们在 ACPI 里标注了 PSCI 支持<b>（并要求 Hypervisor\
+  \ Call）</b>，但是 UEFI 库里的其他电源操作还是通过 PMIC 完成。</p><p>不过看上去 HVC PSCI 没法让 Linux 带起来。Linux\
+  \ 只能单核启动，尚未调查具体原因。</p><p><br></p><p><br></p><p>完成了这些内容后，Windows 就能启动了。不过把各种外设带起来，还需要挺长的时间。后面是几张图。</p><figure><noscript><img\
+  \ src=\"https://pic4.zhimg.com/v2-cb395d2516b46a8df0a066717b7000f7_b.jpg\" data-caption=\"\
+  \" data-size=\"normal\" data-rawwidth=\"4032\" data-rawheight=\"3024\" class=\"\
+  origin_image zh-lightbox-thumb\" width=\"4032\" data-original=\"https://pic4.zhimg.com/v2-cb395d2516b46a8df0a066717b7000f7_r.jpg\"\
+  ></noscript><img src=\"data:image/svg+xml;utf8,&lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='4032'%20height='3024'&gt;&lt;/svg&gt;\"\
+  \ data-caption=\"\" data-size=\"normal\" data-rawwidth=\"4032\" data-rawheight=\"\
+  3024\" class=\"origin_image zh-lightbox-thumb lazy\" width=\"4032\" data-original=\"\
+  https://pic4.zhimg.com/v2-cb395d2516b46a8df0a066717b7000f7_r.jpg\" data-actualsrc=\"\
+  https://pic4.zhimg.com/v2-cb395d2516b46a8df0a066717b7000f7_b.jpg\"></figure><figure><noscript><img\
+  \ src=\"https://pic3.zhimg.com/v2-571c0aa539a94df53a1d65ff70f60d36_b.jpg\" data-caption=\"\
+  \" data-size=\"normal\" data-rawwidth=\"4032\" data-rawheight=\"3024\" class=\"\
+  origin_image zh-lightbox-thumb\" width=\"4032\" data-original=\"https://pic3.zhimg.com/v2-571c0aa539a94df53a1d65ff70f60d36_r.jpg\"\
+  ></noscript><img src=\"data:image/svg+xml;utf8,&lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='4032'%20height='3024'&gt;&lt;/svg&gt;\"\
+  \ data-caption=\"\" data-size=\"normal\" data-rawwidth=\"4032\" data-rawheight=\"\
+  3024\" class=\"origin_image zh-lightbox-thumb lazy\" width=\"4032\" data-original=\"\
+  https://pic3.zhimg.com/v2-571c0aa539a94df53a1d65ff70f60d36_r.jpg\" data-actualsrc=\"\
+  https://pic3.zhimg.com/v2-571c0aa539a94df53a1d65ff70f60d36_b.jpg\"></figure><figure><noscript><img\
+  \ src=\"https://pic3.zhimg.com/v2-be91972d9e7a9d37428fbcadf0d84322_b.jpg\" data-caption=\"\
+  \" data-size=\"normal\" data-rawwidth=\"4032\" data-rawheight=\"3024\" class=\"\
+  origin_image zh-lightbox-thumb\" width=\"4032\" data-original=\"https://pic3.zhimg.com/v2-be91972d9e7a9d37428fbcadf0d84322_r.jpg\"\
+  ></noscript><img src=\"data:image/svg+xml;utf8,&lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='4032'%20height='3024'&gt;&lt;/svg&gt;\"\
+  \ data-caption=\"\" data-size=\"normal\" data-rawwidth=\"4032\" data-rawheight=\"\
+  3024\" class=\"origin_image zh-lightbox-thumb lazy\" width=\"4032\" data-original=\"\
+  https://pic3.zhimg.com/v2-be91972d9e7a9d37428fbcadf0d84322_r.jpg\" data-actualsrc=\"\
+  https://pic3.zhimg.com/v2-be91972d9e7a9d37428fbcadf0d84322_b.jpg\"></figure><p>还有几张号外。</p><figure><noscript><img\
+  \ src=\"https://pic3.zhimg.com/v2-00e6ae743b9b3f12ace769cea78ff3d6_b.jpg\" data-caption=\"\
+  \" data-size=\"normal\" data-rawwidth=\"4032\" data-rawheight=\"3024\" class=\"\
+  origin_image zh-lightbox-thumb\" width=\"4032\" data-original=\"https://pic3.zhimg.com/v2-00e6ae743b9b3f12ace769cea78ff3d6_r.jpg\"\
+  ></noscript><img src=\"data:image/svg+xml;utf8,&lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='4032'%20height='3024'&gt;&lt;/svg&gt;\"\
+  \ data-caption=\"\" data-size=\"normal\" data-rawwidth=\"4032\" data-rawheight=\"\
+  3024\" class=\"origin_image zh-lightbox-thumb lazy\" width=\"4032\" data-original=\"\
+  https://pic3.zhimg.com/v2-00e6ae743b9b3f12ace769cea78ff3d6_r.jpg\" data-actualsrc=\"\
+  https://pic3.zhimg.com/v2-00e6ae743b9b3f12ace769cea78ff3d6_b.jpg\"></figure><figure><noscript><img\
+  \ src=\"https://pic4.zhimg.com/v2-f23bed2250204dca05b61c59d4d855db_b.jpg\" data-caption=\"\
+  \" data-size=\"normal\" data-rawwidth=\"4032\" data-rawheight=\"3024\" class=\"\
+  origin_image zh-lightbox-thumb\" width=\"4032\" data-original=\"https://pic4.zhimg.com/v2-f23bed2250204dca05b61c59d4d855db_r.jpg\"\
+  ></noscript><img src=\"data:image/svg+xml;utf8,&lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='4032'%20height='3024'&gt;&lt;/svg&gt;\"\
+  \ data-caption=\"\" data-size=\"normal\" data-rawwidth=\"4032\" data-rawheight=\"\
+  3024\" class=\"origin_image zh-lightbox-thumb lazy\" width=\"4032\" data-original=\"\
+  https://pic4.zhimg.com/v2-f23bed2250204dca05b61c59d4d855db_r.jpg\" data-actualsrc=\"\
+  https://pic4.zhimg.com/v2-f23bed2250204dca05b61c59d4d855db_b.jpg\"></figure><p></p>"
+contributions:
+- column:
+    accept_submission: true
+    articles_count: 61
+    author:
+      avatar_url: https://pic3.zhimg.com/4ad478c148b4e9ccbe312cfa53402b0f_l.jpg
+      gender: 1
+      headline: 已而！已而！
+      id: 72036ce918812daac46c75d7cac1e7d2
+      is_followed: false
+      is_following: false
+      name: James Swineson
+      type: people
+      url: /people/72036ce918812daac46c75d7cac1e7d2
+      url_token: james-swineson
+      user_type: people
+    can_manage: false
+    comment_permission: all
+    created: 1394632777
+    description: ''
+    followers: 2036
+    id: computers
+    image_url: https://pic2.zhimg.com/008a19032e74677b9dcc1946e520b63f_b.jpg
+    intro: ''
+    is_following: false
+    title: About Computers
+    type: column
+    updated: 1438759721
+    url: https://zhuanlan.zhihu.com/computers
+    url_token: computers
+  id: 1315529
+  state: accepted
+  type: first_publish
+created: 1525457802
+excerpt: <img src="https://pic4.zhimg.com/v2-f3772e53eadc9744f0e75c1dc29b496f_200x112.jpg"
+  data-caption="这是这只 $300 的手机。价格刚刚从美亚截图的" data-size="normal" data-rawwidth="1711"
+  data-rawheight="1019" data-watermark="watermark" data-original-src="v2-f3772e53eadc9744f0e75c1dc29b496f"
+  data-watermark-src="v2-d2c3e1afb48c04e8e19d64cc269f8814" data-private-watermark-src=""
+  class="origin_image inline-img zh-lightbox-thumb" data-original="https://pic4.zhimg.com/v2-f3772e53eadc9744f0e75c1dc29b496f_r.jpg"><a
+  href="https://zhuanlan.zhihu.com/p/34572676">这是上一篇文章的续集</a>。总的来说，差异不是特别大，但是也有一些细节上的不同。众所周知，Windows
+  Phone 8 和 Windows 10 Mobile 没有发布过正式的 AArch64 版本。所以即使在 Lumia 950, 950XL, HP Elite
+  x3 之类的设备上，他们也是以 AArch32 模式运行的（…
+excerpt_title: ''
+id: 36439397
+image_url: https://pic2.zhimg.com/v2-bc3069c5ffbfd399738fdf8e37fa1152_b.jpg
+is_labeled: false
+is_title_image_full_screen: false
+state: published
+suggest_edit:
+  reason: ''
+  status: false
+  tip: ''
+  title: ''
+  url: ''
+title: 在 $300 的手机上启动 Windows 10 ARM64
+title_image: https://pic2.zhimg.com/v2-bc3069c5ffbfd399738fdf8e37fa1152_b.jpg
+topics:
+- id: '20007813'
+  name: Windows 10
+  type: topic
+  url: https://www.zhihu.com/api/v4/topics/20007813
+- id: '19573354'
+  name: UEFI
+  type: topic
+  url: https://www.zhihu.com/api/v4/topics/19573354
+- id: '20026621'
+  name: Lumia 950
+  type: topic
+  url: https://www.zhihu.com/api/v4/topics/20026621
+type: article
+updated: 1525788930
+upvoted_followees: []
+url: https://zhuanlan.zhihu.com/p/36439397
+voteup_count: 86
+voting: 0

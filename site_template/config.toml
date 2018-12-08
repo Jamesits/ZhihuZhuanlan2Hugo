@@ -1,0 +1,10 @@
+languageCode = "zh-cn"
+title = "My New Hugo Site"
+theme = "hugo-now"
+enableEmoji = false
+
+[blackfriday]
+  smartypants = false
+  extensions = ["hardLineBreak"]
+  fractions = false
+  plainIDAnchors = true

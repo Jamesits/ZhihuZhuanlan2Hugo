@@ -1,0 +1,773 @@
+- author:
+    avatar: {id: v2-77acb5043344a66c89735d8fc03bcd66, template: 'https://pic1.zhimg.com/{id}_{size}.jpg'}
+    bio: 好忙啊
+    description: 'Surface Pro * 用户，可能准备拿 Scholarship 的钱买 Surface Studio。
+
+      小萌新/小透明/AS43126 Ops'
+    hash: 8e4d0fedc48068f5fb69da994751d27a
+    isBanned: false
+    isFollowed: false
+    isFollowing: false
+    isOrg: false
+    isOrgWhiteList: false
+    name: imbushuo
+    profileUrl: https://www.zhihu.com/people/imbushuo
+    slug: imbushuo
+    uid: 31857294966784
+  canComment: false
+  commentPermission: anyone
+  commentsCount: 2
+  content: <p></p><img src="v2-89fc506c3e610a887db8738da7c6b88e.jpg" data-caption=""
+    data-size="normal" data-rawwidth="2304" data-rawheight="1320" data-watermark="watermark"
+    data-original-src="v2-89fc506c3e610a887db8738da7c6b88e" data-watermark-src="v2-6aa34561aec9e58628a887dd238829cc"
+    data-private-watermark-src=""><p>如图。Linux 社区那边也有人提到过类似的情况。</p><p>(我在想 kernel_task
+    日常发疯是不是也和这有关，但是我对 XNU 调试和 Profile 不熟）</p>
+  href: /api/posts/50185298
+  isTitleImageFullScreen: false
+  likesCount: 11
+  links: {comments: /api/posts/50185298/comments}
+  meta: {next: null, previous: null}
+  publishedTime: '2018-11-17T20:49:08+08:00'
+  rating: none
+  slug: 50185298
+  snapshotUrl: ''
+  sourceUrl: ''
+  state: published
+  summary: ''
+  title: 水果家可能已经没有会正确写 ACPI 的人了
+  titleImage: ''
+  url: /p/50185298
+- author:
+    avatar: {id: v2-77acb5043344a66c89735d8fc03bcd66, template: 'https://pic1.zhimg.com/{id}_{size}.jpg'}
+    bio: 好忙啊
+    description: 'Surface Pro * 用户，可能准备拿 Scholarship 的钱买 Surface Studio。
+
+      小萌新/小透明/AS43126 Ops'
+    hash: 8e4d0fedc48068f5fb69da994751d27a
+    isBanned: false
+    isFollowed: false
+    isFollowing: false
+    isOrg: false
+    isOrgWhiteList: false
+    name: imbushuo
+    profileUrl: https://www.zhihu.com/people/imbushuo
+    slug: imbushuo
+    uid: 31857294966784
+  canComment: false
+  commentPermission: anyone
+  commentsCount: 2
+  content: "<p><b>环境</b></p><ul><li>亚特兰大 Google Fiber</li><li>Cisco 1100 ISR (C1111-4P),\
+    \ IOS XE Fuji 16.8.1</li><li>GigabitEthernet0/0/0.2 为到 ONT 的接口</li><li>其他接口均配置为二层接口，Access\
+    \ 模式，连接到一个 Vlan100</li></ul><p><b>细节</b></p><ul><li>据这位实际配置者说，Google 的 Fiber Box\
+    \ 十分奇怪，你不 tag dot1Q VLAN2 就根本上不了网</li><li>Google 现在只给一个 /64 了，十分抠门（Comcast 都有\
+    \ /56）</li></ul><p><b>配置</b></p><code lang=\"text\">Current configuration : 2597\
+    \ bytes\n!\n! Last configuration change at 13:49:17 UTC Sat Oct 27 2018\n!\nversion\
+    \ 16.8\nservice timestamps debug datetime msec\nservice timestamps log datetime\
+    \ msec\nplatform qfp utilization monitor load 80\nno platform punt-keepalive disable-kernel-core\n\
+    !\nhostname ISR-1100\n!\nboot-start-marker\nboot-end-marker\n!\n!\n!\nno aaa new-model\n\
+    clock timezone UTC -4 0\n!\nno ip domain lookup\n!\nip dhcp pool HOME\n network\
+    \ 192.168.0.0 255.255.255.0\n default-router 192.168.0.1\n dns-server 1.1.1.1\n\
+    !\n!\n!\nipv6 source-route\nipv6 unicast-routing\nipv6 dhcp pool SLAAC\n dns-server\
+    \ 2001:4860:4860::8888\n domain-name ATL-HOME.LOCAL\n!\n!\n!\n!\n!\n!\n!\n!\n\
+    subscriber templating\n!\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n\
+    !\nlicense udi pid C1111-4P sn *********\nno license smart enable\n!\ndiagnostic\
+    \ bootup level minimal\n!\nspanning-tree extend system-id\n!\n!\nusername *******\n\
+    !\nredundancy\n mode none\n!\n!\nvlan internal allocation policy ascending\n!\n\
+    !\nclass-map match-all cmap-match-dhcp\n match protocol dhcp\n!\npolicy-map tag-out-gfiber\n\
+    \ class cmap-match-dhcp\n  set cos 2\n class class-default\n  set cos 3\n!\n!\n\
+    !\n!\n!\n!\ninterface GigabitEthernet0/0/0\n no ip address\n load-interval 30\n\
+    \ negotiation auto\n no cdp enable\n ipv6 enable\n ipv6 nd ra suppress all\n!\n\
+    interface GigabitEthernet0/0/0.2\n encapsulation dot1Q 2\n no ip dhcp client request\
+    \ dns-nameserver\n ip address dhcp\n ip nat outside\n ip nbar protocol-discovery\n\
+    \ no cdp enable\n ipv6 address autoconfig default\n ipv6 enable\n ipv6 nd ra suppress\
+    \ all\n ipv6 dhcp client pd google\n ipv6 dhcp client request vendor\n ipv6 virtual-reassembly\
+    \ in\n service-policy output tag-out-gfiber\n ip virtual-reassembly\n!\ninterface\
+    \ GigabitEthernet0/0/1\n no ip address\n shutdown\n negotiation auto\n!\ninterface\
+    \ GigabitEthernet0/1/0\n switchport access vlan 100\n!\ninterface GigabitEthernet0/1/1\n\
+    \ switchport access vlan 100\n!\ninterface GigabitEthernet0/1/2\n switchport access\
+    \ vlan 100\n!\ninterface GigabitEthernet0/1/3\n switchport access vlan 100\n!\n\
+    interface Vlan1\n no ip address\n shut\n!\ninterface Vlan100\n ip address 192.168.0.1\
+    \ 255.255.255.0\n ip nat inside\n ipv6 enable\n ipv6 address google ::2:0:0:0:1/64\n\
+    \ ipv6 nd other-config-flag\n ipv6 nd ra interval 180\n ipv6 dhcp server SLAAC\
+    \ rapid-commit\n ip virtual-reassembly\n!\nip nat inside source list 1 interface\
+    \ GigabitEthernet0/0/0.2 overload\nip forward-protocol nd\nno ip http server\n\
+    no ip http secure-server\n!\n!\naccess-list 1 permit any\n!\n!\n!\n!\ncontrol-plane\n\
+    !\n!\nline con 0\n transport input none\n stopbits 1\nline vty 0 4\n login\n!\n\
+    ntp server 0.us.pool.ntp.org prefer\nwsma agent exec\n!\nwsma agent config\n!\n\
+    wsma agent filesys\n!\nwsma agent notify\n!\n!\nend</code><p></p>"
+  href: /api/posts/47839727
+  isTitleImageFullScreen: false
+  likesCount: 9
+  links: {comments: /api/posts/47839727/comments}
+  meta: {next: null, previous: null}
+  publishedTime: '2018-10-28T03:12:49+08:00'
+  rating: none
+  slug: 47839727
+  snapshotUrl: ''
+  sourceUrl: ''
+  state: published
+  summary: ''
+  title: 实战：Google Fiber IPv6 on Cisco 1100 ISR
+  titleImage: https://pic3.zhimg.com/v2-f2289101794c6a6803a1939dcb83231e_r.jpg
+  url: /p/47839727
+- author:
+    avatar: {id: v2-77acb5043344a66c89735d8fc03bcd66, template: 'https://pic1.zhimg.com/{id}_{size}.jpg'}
+    bio: 好忙啊
+    description: 'Surface Pro * 用户，可能准备拿 Scholarship 的钱买 Surface Studio。
+
+      小萌新/小透明/AS43126 Ops'
+    hash: 8e4d0fedc48068f5fb69da994751d27a
+    isBanned: false
+    isFollowed: false
+    isFollowing: false
+    isOrg: false
+    isOrgWhiteList: false
+    name: imbushuo
+    profileUrl: https://www.zhihu.com/people/imbushuo
+    slug: imbushuo
+    uid: 31857294966784
+  canComment: false
+  commentPermission: anyone
+  commentsCount: 12
+  content: "<p>听说有些地方电信 PPPoE 能拿到一大段 IPv6 了，也听说最近电信联通都有领导要派人检查 IPv6 部署情况，那么是时候写个 CPE\
+    \ 设备的配置教程了。本文第一部分由 James Swineson 完成，第二部分由我完成。</p><p><br></p><p>首先确定你的设备是不是支持\
+    \ IPv6 配置。如果你的设备是电信给的光猫，而且你没有开桥接/二层模式，那么在区域 BRAS 支持 IPv6 后，电信应该会给你推配置。这种情况下你可以关掉这个网页了，因为这篇文章对你的意义不大。</p><p>如果你开了光猫的桥接/二层模式，且你的设备支持\
+    \ DHCPv6-PD 和 Router Advertisement，那么你可以继续。如果你用的是 TP-Link 之流的设备，那么你可以不用看这篇文章了，立即出门左转购买\
+    \ Cisco ISR。</p><p>现在国际通行的家宽 IPv6 部署方法是采取 DHCP Prefix Delegation 的形式，即 ISP 给用户分发一个略大于\
+    \ /64 的 IPv6 地址块，并将整个地址块路由给 CPE 设备。CPE 设备使用地址块中的任意一个 /64 地址块向下游设备发送 Router Advertisement。下游客户端设备使用\
+    \ Router Advertisement 进行无状态自动地址配置并获得 IPv6 连接能力。</p><p><br></p><p>本文配置以一台 MikroTik\
+    \ Router OS 设备，以及一台 Cisco IOS 设备为例。</p><p><br></p><p><b>MikroTik</b></p><p>首先确认\
+    \ PPPoE 拨号用的 Profile 启用了 IPv6 功能：</p><code lang=\"text\">/ppp profile add change-tcp-mss=yes\
+    \ use-ipv6=yes name=pppoe\n/interface pppoe-client add interface=GigabitEthernet0/1\
+    \ profile=pppoe user=xxx password=yyy name=Dialer0</code><p>然后在 PPPoE 端口上开一个 DHCPv6\
+    \ PD 客户端，把收到的 IPv6 Prefix 扔进一个地址池：</p><code lang=\"text\">/ipv6 dhcp-client add\
+    \ interface=Dialer0 request=prefix pool-name=pppoe</code><p>最后给每个桥分配一段地址用作 SLAAC：</p><code\
+    \ lang=\"text\">/ipv6 address\nadd address=::1/64 from-pool=pppoe interface=Vlan1\
+    \ advertise=yes\nadd address=::1/64 from-pool=pppoe interface=Vlan2 advertise=yes</code><p>这里要注意的是如果\
+    \ from-pool 配了池子，那么地址段会按顺序从 pool（也就是从DHCPv6客户端拿到的段）里面分配。所以address 不需要填完整地址，而只需要填你希望该路由器在该段里用的地址后缀。举个例子：如果\
+    \ DHCP 拿到了 2001:db8:1234:5670::/60，你第一个address 填::5，那么你的路由器会自动从pool里面取出第一段即 2001:db8:1234:5670::/64\
+    \ 做 SLAAC，然后路由器自己配置 2001:db8:1234:5670::5 这个 IP。</p><p><br></p><p><b>Cisco IOS</b></p><code\
+    \ lang=\"text\">ipv6 cef\nipv6 unicast-routing\nipv6 dhcp pool ChinaTelecom\n\
+    \  prefix-delegation pool CT-IPv6\n\ninterface Dialer0\n  ...\n  ipv6 address\
+    \ autoconfig default\n  ipv6 enable\n  ipv6 dhcp client pd CT-IPv6\n  ipv6 dhcp\
+    \ client request vendor\n  ipv6 nd ra suppress\n\ninterface Vlan100\n  ...\n \
+    \ ipv6 address CT-IPv6 ::/64 eui-64\n  ipv6 enable\n  ipv6 nd other-config-flag\n\
+    \  ipv6 nd ra interval 180\n  ipv6 dhcp server ChinaTelecom rapid-commit</code><p><br></p><p><b>别的问题</b></p><p>已知电信的\
+    \ ME60 的配置上，DHCP Renewing 很可能不工作，这会导致 MikroTik 重启时 DHCPv6 Client 卡住。Workaround\
+    \ 是在开机时执行一个脚本，禁用再启用一次 DHCPv6 Client 来把 Prefix 放掉。</p><p>对于非路由器角色的 Cisco 设备，在接入本地\
+    \ IPv6 网络后，最好关掉默认发送的 RA，以免造成不必要的麻烦。</p><code lang=\"text\">bc-sw0#conf t\nEnter\
+    \ configuration commands, one per line.  End with CNTL/Z.\nbc-sw0(config)#int\
+    \ vlan250\nbc-sw0(config-if)#ipv6 nd ra suppress all\nbc-sw0(config-if)#end\n\
+    bc-sw0#copy running-config startup-config\nDestination filename [startup-config]?\n\
+    Building configuration...\n[OK]\nbc-sw0#</code><p><br></p><p><b>推荐的客户端和防火墙配置</b></p><p>打开\
+    \ <a href=\"https://tools.ietf.org/html/rfc4941\">SLAAC 隐私扩展</a></p><p>因为 SLAAC\
+    \ 和 EUI-64 使用的地址计算方法可以泄露设备的 MAC 地址，因此在需要高保密的个人设备上最好打开它。服务器和网络设备则无所谓，因为它们更需要固定的\
+    \ IPv6 地址。现代操作系统一般都默认打开了 SLAAC 隐私扩展，所以一般在这一步不需要做任何操作。对于 Linux 发行版，请参见发行版的指南。</p><p><br></p><p>不要在任何地方阻断\
+    \ ICMPv6 入站和出站</p><p>ICMPv6 报文在 IPv6 网络里扮演了非常重要的角色，因此不应该在任何客户端和网络设备上阻断 ICMPv6\
+    \ 报文的出入站。<i>注意 ICMPv6 不只是 Echo (ping）。</i></p><p><br></p><p>打开设备的防火墙</p><p>Windows\
+    \ 和 macOS 的默认防火墙配置一般对于普通 IPv6 网络是够用的。很多 Android 设备默认没有配置防火墙，所以我们需要在 CPE 设备上对其进行一些配置。</p><p><br></p><p>CPE\
+    \ 设备的防火墙简单配置</p><p>以下以一台 MikroTik 设备为例，配置有状态防火墙，使得 CPE 网内设备主动发起的连接始终可用，而默认阻断未知的外部连接。</p><code\
+    \ lang=\"text\">/ipv6 firewall filter\nadd action=accept chain=input comment=\"\
+    Allow established connections\" connection-state=established disabled=no\nadd\
+    \ action=accept chain=input comment=\"Allow related connections\" connection-state=related\
+    \ disabled=no\nadd action=accept chain=input comment=\"Allow ICMP\" disabled=no\
+    \ protocol=icmpv6\nadd action=accept chain=input comment=\"Allow UDP\" disabled=no\
+    \ protocol=udp\nadd action=drop chain=input comment=\"\" disabled=no\nadd action=accept\
+    \ chain=forward comment=\"Allow any to internet\" disabled=no out-interface=Dialer0\n\
+    add action=accept chain=forward comment=\"Allow established connections\" connection-state=established\
+    \ disabled=no\nadd action=accept chain=forward comment=\"Allow related connections\"\
+    \ connection-state=related disabled=no\nadd action=drop chain=forward comment=\"\
+    \" disabled=no</code><p>对于有其他入站需求的设备来说，可以对防火墙进行一些调整。</p>"
+  href: /api/posts/40836019
+  isTitleImageFullScreen: false
+  likesCount: 45
+  links: {comments: /api/posts/40836019/comments}
+  meta: {next: null, previous: null}
+  publishedTime: '2018-07-30T09:57:10+08:00'
+  rating: none
+  slug: 40836019
+  snapshotUrl: ''
+  sourceUrl: ''
+  state: published
+  summary: ''
+  title: 适用于家用场景的电信 IPv6 网络和防火墙配置
+  titleImage: ''
+  url: /p/40836019
+- author:
+    avatar: {id: v2-77acb5043344a66c89735d8fc03bcd66, template: 'https://pic1.zhimg.com/{id}_{size}.jpg'}
+    bio: 好忙啊
+    description: 'Surface Pro * 用户，可能准备拿 Scholarship 的钱买 Surface Studio。
+
+      小萌新/小透明/AS43126 Ops'
+    hash: 8e4d0fedc48068f5fb69da994751d27a
+    isBanned: false
+    isFollowed: false
+    isFollowing: false
+    isOrg: false
+    isOrgWhiteList: false
+    name: imbushuo
+    profileUrl: https://www.zhihu.com/people/imbushuo
+    slug: imbushuo
+    uid: 31857294966784
+  canComment: false
+  commentPermission: anyone
+  commentsCount: 8
+  content: '<p></p><img src="v2-8c55cdb11d03fad06cac4ae88482bfec.jpg" data-caption=""
+    data-size="normal" data-rawwidth="4032" data-rawheight="3024" data-watermark="watermark"
+    data-original-src="v2-8c55cdb11d03fad06cac4ae88482bfec" data-watermark-src="v2-789f4d83a6080a65316e0c329ad3d9d3"
+    data-private-watermark-src=""><p>如图。你可以很快丢掉 Trackpad++ 之流需要用户态程序来完成手势之类的第三方驱动了。因为
+    SPI 版本的 MacBook 精确式触摸板驱动需要 EV 签名（未来的机型还需要 WHQL，因为有 Secure Boot），所以目前尝试的话需要打开 Testsigning
+    并卸载官方驱动（Windows 以 WHQL 驱动优先）。</p><p><br></p><p><b>项目地址</b></p><p><a href="https://github.com/imbushuo/mac-precision-touchpad/">imbushuo/mac-precision-touchpad</a></p><p><br></p><p><b>如何判断我的
+    MacBook 使用的是 SPI 还是 USB 触摸板？</b></p><p>在 Windows 下打开设备管理器，按照连接顺序排列设备。如果触摸板设备出现在
+    Apple SPI Device 下，则触摸板使用 SPI 连接。否则使用 USB 连接。</p><p>已知 MacBook 12-inch, MacBook
+    Pro 13-inch 从 Mid 2014 开始的机型，和 MacBook Pro 15-inch 从 2016 开始的机型使用 SPI 的触摸板。</p><p>MacBook
+    Air 的触摸板多为双重连接，在 macOS 下使用 SPI，在 Windows 上使用 USB。这个连接通过 ACPI 方法来判断和切换。</p><p><br></p><p><b>目前支持的机型有：</b></p><ul><li>MacBook9,1
+    (MacBook, 12-inch, Retina, Early 2016): PID 0x0275, VID 0x05ac</li><li>MacBook10,1
+    (MacBook, 12-inch, Retina, 2017): PID 0x0279, VID 0x05ac</li><li>MacBookPro11,1
+    (MacBook Pro, Retina, 13-inch, Mid 2014), PID 0x0272, VID 0x05ac</li><li>MacBookPro12,1
+    (MacBook Pro, Retina, 13-inch, Early 2015), PID 0x0273, VID 0x05ac</li></ul><p><br></p><p><b>如何让我的
+    MacBook 得到这个项目的支持？</b></p><p>在 macOS 上打开 System Report （系统报告），转到 Hardware &gt;
+    SPI，如下图所示。</p><p>在 <a href="https://github.com/imbushuo/mac-precision-touchpad">GitHub
+    Issues</a> 或本文章的评论区留言报告 Product ID, Vendor ID 以及你的设备型号标识符 (例如 MacBook 9,1) 和键盘类型（ANSI/ISO/JIS，中文键盘当作
+    ANSI 报告）。</p><img src="v2-eddc57ce3c427b4db51f63a0c1a44ec2.jpg" data-caption=""
+    data-size="normal" data-rawwidth="1680" data-rawheight="1668" data-watermark="watermark"
+    data-original-src="v2-eddc57ce3c427b4db51f63a0c1a44ec2" data-watermark-src="v2-3fefb0c8b2a8c461ca25b5b824de3abc"
+    data-private-watermark-src=""><p></p><p></p>'
+  href: /api/posts/39771646
+  isTitleImageFullScreen: false
+  likesCount: 56
+  links: {comments: /api/posts/39771646/comments}
+  meta: {next: null, previous: null}
+  publishedTime: '2018-07-15T02:28:39+08:00'
+  rating: none
+  slug: 39771646
+  snapshotUrl: ''
+  sourceUrl: ''
+  state: published
+  summary: ''
+  title: MacBook 精确式触摸板项目现已支持 SPI 触摸板
+  titleImage: https://pic2.zhimg.com/v2-8c55cdb11d03fad06cac4ae88482bfec_r.jpg
+  url: /p/39771646
+- author:
+    avatar: {id: v2-77acb5043344a66c89735d8fc03bcd66, template: 'https://pic1.zhimg.com/{id}_{size}.jpg'}
+    bio: 好忙啊
+    description: 'Surface Pro * 用户，可能准备拿 Scholarship 的钱买 Surface Studio。
+
+      小萌新/小透明/AS43126 Ops'
+    hash: 8e4d0fedc48068f5fb69da994751d27a
+    isBanned: false
+    isFollowed: false
+    isFollowing: false
+    isOrg: false
+    isOrgWhiteList: false
+    name: imbushuo
+    profileUrl: https://www.zhihu.com/people/imbushuo
+    slug: imbushuo
+    uid: 31857294966784
+  canComment: false
+  commentPermission: anyone
+  commentsCount: 5
+  content: "<p>MacBook 12-inch 使用的 CPU / SoC 整一个都是为 Windows 设计的，然后 Apple 强行拿来往 macOS\
+    \ 上用。于是装了 Windows 之后我在想怎么样可以让它更好用一点。因为之前写了好几个面向不同平台的 UEFI &amp; ACPI 实现，我就想干脆启动\
+    \ Connected Standby 好了。</p><p>下午三点钟在和 <a class=\"member_mention\" href=\"http://www.zhihu.com/people/72036ce918812daac46c75d7cac1e7d2\"\
+    \ data-hash=\"72036ce918812daac46c75d7cac1e7d2\" data-hovercard=\"p$b$72036ce918812daac46c75d7cac1e7d2\"\
+    >@James Swineson</a> 讨论这事的可行性，然后晚上就写出来了。</p><p><br></p><p>Note: AMD 很可能没有 Connected\
+    \ Standby。</p><p>Note2: 本文也发了 V2EX。</p><p><br></p><p><b>更新</b></p><p>我们给 <a class=\"\
+    member_mention\" href=\"http://www.zhihu.com/people/72036ce918812daac46c75d7cac1e7d2\"\
+    \ data-hash=\"72036ce918812daac46c75d7cac1e7d2\" data-hovercard=\"p$b$72036ce918812daac46c75d7cac1e7d2\"\
+    >@James Swineson</a> 的 MacBookPro11,1 也打开了 Connected Standby，而且表现比 New MacBook\
+    \ 更好。</p><img src=\"v2-b1b6dcd97f15e5308f26ee032b173b6f.jpg\" data-caption=\"\"\
+    \ data-size=\"normal\" data-rawwidth=\"4032\" data-rawheight=\"3024\" data-watermark=\"\
+    watermark\" data-original-src=\"v2-b1b6dcd97f15e5308f26ee032b173b6f\" data-watermark-src=\"\
+    v2-c779f99cc1de25c6d8758f441da0b28e\" data-private-watermark-src=\"\"><p><br></p><p><b>在\
+    \ MacBook 12-inch 上的效果</b></p><p>你可以看视频： <a href=\"https://twitter.com/imbushuo/status/1016015791827836929\"\
+    >https://twitter.com/imbushuo/status/1016015791827836929</a></p><p><br></p><ul><li>你可以用触摸板\
+    \ /键盘 /盖子的任意一种来唤醒设备</li><li>Windows 唤醒速度比 macOS 还快好几倍（真的，笑死我了……）</li><li>Windows\
+    \ 睡眠时可以一直保持网络连接，可以在睡眠时收邮件 /收推送 /IRC 挂机 /BT 下载（某些客户端支持）/Windows Update （比 Power\
+    \ Nap 更进了一步）</li><li>Windows 睡眠时可以播放歌曲，只要是 UWP （本地歌曲或者网上的歌曲都可以）</li><li>Windows\
+    \ 可以在睡眠时对系统进行一些维护和优化操作</li><li>差不多你得到了可能比 Surface 更好的体验</li></ul><p><br></p><p><b>已知问题</b></p><p><a\
+    \ href=\"https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/modern-standby\"\
+    >Windows 不支持 S0ix (Connected Standby) 和 S3 的热切换</a>，所以需要重装系统。</p><blockquote>You\
+    \ cannot switch between S3 and Modern Standby by changing a setting in the BIOS.\
+    \ Switching the power model is not supported in Windows without a complete OS\
+    \ re-install.</blockquote><p>单独安装未知设备的驱动，而不是安装 Boot Camp 一个大包。Apple 的一两个服务和驱动会干扰\
+    \ S0ix 的正常运行，<b>从而导致你开机无限转圈</b>。</p><p>已经做成了一个 UEFI 驱动（实际上 UEFI 驱动的入口点参数和应用程序一致），可以由\
+    \ rEFInd 自动加载，且不影响 macOS 的睡眠功能（因为 macOS 不读这个 Flag）。</p><p><br></p><p><b>实现</b></p><p>不同于\
+    \ ACPI S3，S0ix 并不需要 ACPI DSDT 引入特殊的 ACPI 方法。自 ACPI 5.0 后，只需要在 FADT 表里标记 S0 Low\
+    \ Power Idle: EFI_ACPI_5_0_LOW_POWER_S0_IDLE_CAPABLE 即可。如果支持 5.0+，EDK2 的宏的 5_0\
+    \ 换成对应版本，不过总之都是 Flag 的 Bit 21。标记好后重新算一遍 FADT 表的 Checksum。核心实现如下：</p><code lang=\"\
+    c\">if (Rsdp != NULL &amp;&amp; XsdtHeader != NULL)\n{\n    UINT64* EntryAddress\
+    \ = (UINT64*)&amp;XsdtHeader[1];\n    UINT32 EntryArraySize = (XsdtHeader-&gt;Length\
+    \ - sizeof(*XsdtHeader)) / sizeof(UINT64);\n\n    Print(L\"XSDT: Count = %d\\\
+    n\", EntryArraySize);\n    for (UINT32 j = 0; j &lt; EntryArraySize; j++)\n  \
+    \  {\n        EFI_ACPI_DESCRIPTION_HEADER* Entry = (EFI_ACPI_DESCRIPTION_HEADER*)((UINTN)EntryAddress[j]);\n\
+    \        if (Entry-&gt;Signature != EFI_ACPI_2_0_FIXED_ACPI_DESCRIPTION_TABLE_SIGNATURE)\n\
+    \        {\n            Print(L\"%d: Not FADT table \\n\", j);\n            continue;\n\
+    \        }\n\n        if (Entry-&gt;Revision &lt; EFI_ACPI_5_0_FIXED_ACPI_DESCRIPTION_TABLE_REVISION)\n\
+    \        {\n            Print(L\"%d: FADT revision is below ACPI 5.0 \\n\", j);\n\
+    \            continue;\n        }\n\n        Print(L\"FADT table located. \\n\"\
+    );\n\n        // Iteration completed\n        Fadt = (EFI_ACPI_5_0_FIXED_ACPI_DESCRIPTION_TABLE*)\
+    \ Entry;\n        break;\n    }\n}\n\nif (Fadt != NULL)\n{\n    Print(L\"FADT\
+    \ Flags: 0x%x \\n\", Fadt-&gt;Flags);\n\n    if ((Fadt-&gt;Flags &gt;&gt; 21)\
+    \ &amp; 1U)\n    {\n        Print(L\"S0 Low Power Idle State Flag is already enabled\
+    \ on this platform \\n\");\n    }\n    else\n    {\n        Print(L\"Setting S0\
+    \ Low Power Idle State Flag \\n\");\n\n        // Low Power S0 Idle (V5) is bit\
+    \ 21, enable it\n        Fadt-&gt;Flags |= 1UL &lt;&lt; 21;\n\n        // Re-calc\
+    \ checksum\n        Print(L\"Setting new checksum \\n\");\n        SetAcpiSdtChecksum(Fadt);\n\
+    \n        Print(L\"FADT patch completed. \\n\");\n    }\n}</code><p>然后启动系统安装，启动系统初始化即可。目前这段代码需要每次开机跑一次，我也没做\
+    \ Chainload，比较麻烦。我暂时用 rEFInd 解决。未来会加入 Chainload 来启动 Windows Boot Manager。</p><p><br></p><img\
+    \ src=\"v2-50cf385412ae8adfbcb0fae87b5b5426.jpg\" data-caption=\"\" data-size=\"\
+    normal\" data-rawwidth=\"4032\" data-rawheight=\"3024\" data-watermark=\"watermark\"\
+    \ data-original-src=\"v2-50cf385412ae8adfbcb0fae87b5b5426\" data-watermark-src=\"\
+    v2-2982c215f2e701549871abd623d1fdf7\" data-private-watermark-src=\"\"><p><br></p><p><b>代码</b></p><p>见我的\
+    \ <a href=\"https://github.com/imbushuo/AcpiS0ixPatcher/\">Github Repo</a>。</p><p><br></p><p><b>Disclaimer</b></p><p>由于平台设计的不同和特殊设备的不确定性，我对这个项目在其他笔记本设备上使用造成的后果概不负责。你应该只在低电压的处理器上尝试这个项目，且设备最好能不需要风扇运行较长时间。</p>"
+  href: /api/posts/39299185
+  isTitleImageFullScreen: false
+  likesCount: 52
+  links: {comments: /api/posts/39299185/comments}
+  meta: {next: null, previous: null}
+  publishedTime: '2018-07-09T02:10:09+08:00'
+  rating: none
+  slug: 39299185
+  snapshotUrl: ''
+  sourceUrl: ''
+  state: published
+  summary: ''
+  title: 给 MacBook 启用 Windows 连接待机
+  titleImage: https://pic2.zhimg.com/v2-3cf15323628fecab477f17722d1dd391_r.jpg
+  url: /p/39299185
+- author:
+    avatar: {id: 4ad478c148b4e9ccbe312cfa53402b0f, template: 'https://pic3.zhimg.com/{id}_{size}.jpg'}
+    bio: 已而！已而！
+    description: 一万本大学生 | Programmer at large | 特别擅长玩坏 BGP | 个人网站 https://swineson.me
+      | 有事请发邮件至 zhihu@public.swineson.me，知乎现在不怎么上，其他联系方式也可能疏于关照 | 本人已委托维权骑士（http://rightknights.com）为我的文章进行维权行动
+    hash: 72036ce918812daac46c75d7cac1e7d2
+    isBanned: false
+    isFollowed: false
+    isFollowing: false
+    isOrg: false
+    isOrgWhiteList: false
+    name: James Swineson
+    profileUrl: https://www.zhihu.com/people/james-swineson
+    slug: james-swineson
+    uid: 27898769571840
+  canComment: false
+  commentPermission: anyone
+  commentsCount: 20
+  content: <h2>内存</h2><p>内存这个名字取得并不好，容易让人望文生义，因此现在俗话说的内存的意思我已经看不太懂了。听说现在大家喜欢把它叫“运存”，我觉得比“内存”好。传统意义上的内存指的是
+    SRAM 和 DRAM 二种。SRAM 速度快，造价高，而且没有频率的概念；DRAM 速度慢，便宜。常见的 DDR* 内存属于 DRAM。另外还有一些特殊用途的内存，例如
+    CAM；它们往往成本较高。</p><p>科普三点常识：</p><ul><li>现代 CPU 里面是有各种类型的内存的，包括 SRAM、DRAM 和 CAM。小学信息技术教材里面说的“CPU
+    里只有运算器和控制器”的说法是错误的。当然了，这并不意味着外面不需要再插内存。</li><li>内存不一定会断电就丢失所有数据。NVDIMM 断电的时候就不会丢失数据。</li><li>常见的手机
+    SoC 芯片都是 PoP 的，意思是 SoC 上面直接压着内存芯片。所以你去拆一台高通的手机找一下 SoC，并不能在芯片表面看到高通的标记，倒是有可能看到
+    SAMSUNG 之类的字样。芯片顶上画了个彩色 logo 的电路板图一般都是美工设计的。（@小米 8 透明探索版）</li></ul><h2>外存</h2><p>外存这个名字也取得不好——在这个词语出现的年代，还没有人试图焊各种
+    RAM 到主板上；谁能想到现在硬盘不需要车拉着走呢？不过现在有人把“外存”叫做“内存”，我觉得是更加不合适的。一般来说，除了内存以外能存东西的玩意基本上都叫外存。</p><h2>ROM</h2><p>Read-only
+    Memory，只读存储器。“只读”不一定是不可擦除或不可重新写入，而是需要特殊的方法才能擦除或者重写。（举个例子：EEPROM 就是可以通过较高电压来重新写入的。）一般对
+    ROM 的重新写入称为“烧录”或者“烧写”。</p><p>你能随便往里面塞东西的存储器一般都不是 ROM。CD-ROM 以及一些只读的固件存储属于 ROM。因为成本原因，现在已经很少有狭义的电介质
+    ROM 了。闪存是否属于 ROM 是一个比较有争议的话题。</p><h2>闪存</h2><p>闪存（Flash memory）是目前最常见的固态存储。闪存和
+    EEPROM 的区别在于，EEPROM 的擦除必须是完整擦除，闪存可以按块（block）来擦除。一般来说，闪存根据内部逻辑门类型分为两类，NOR 和 NAND。</p><p>U
+    盘、存储卡和 SSD 都属于闪存。</p><h2>RAM</h2><p>Random Access Memory，随机访问存储器。定义是访问任何地址存放的数据所需时间相同的存储器。</p><p>内存和闪存均属于
+    RAM。 NVRAM（Non-volatile RAM）特指断电不会丢失数据的 RAM。所以闪存既是 ROM 又是 RAM。</p><p></p>
+  href: /api/posts/37816646
+  isTitleImageFullScreen: false
+  likesCount: 63
+  links: {comments: /api/posts/37816646/comments}
+  meta: {next: null, previous: null}
+  publishedTime: '2018-06-09T19:09:25+08:00'
+  rating: none
+  slug: 37816646
+  snapshotUrl: ''
+  sourceUrl: ''
+  state: published
+  summary: ''
+  title: 像 1990 年一样使用计算机术语
+  titleImage: ''
+  url: /p/37816646
+- author:
+    avatar: {id: v2-77acb5043344a66c89735d8fc03bcd66, template: 'https://pic1.zhimg.com/{id}_{size}.jpg'}
+    bio: 好忙啊
+    description: 'Surface Pro * 用户，可能准备拿 Scholarship 的钱买 Surface Studio。
+
+      小萌新/小透明/AS43126 Ops'
+    hash: 8e4d0fedc48068f5fb69da994751d27a
+    isBanned: false
+    isFollowed: false
+    isFollowing: false
+    isOrg: false
+    isOrgWhiteList: false
+    name: imbushuo
+    profileUrl: https://www.zhihu.com/people/imbushuo
+    slug: imbushuo
+    uid: 31857294966784
+  canComment: false
+  commentPermission: anyone
+  commentsCount: 8
+  content: '<p>这篇文章对于大部分 Mac 用户来说是不需要的，因为你们家里可能没有一个 Active Directory……但是我家确实有一个。</p><p>背景知识：FileVault
+    2 和 APFS 加密卷使用一个高仿 macOS 登录界面的 EFI 程序实现卷解密和用户鉴权两个功能。在 iMac Pro 上，Apple T2 实现了对操作系统透明的
+    SSD 加解密功能，很不幸，对于其他 Mac 来说，你还需要手动提供密钥，且苹果没有提供类似 Bitlocker 网络解锁之类的功能（虽然 Mac 的固件有完整的
+    TCP/IP 栈和 Wi-Fi 支持）。于是我把 MacBook 加入了域之后就遇到了系统启动前的登录界面没有 Active Directory 账户的问题。这个问题对于跳过
+    First Setup 的定制镜像来说不应该存在。如果存在请继续看下文。</p><p>很明显我可以通过登录一个本地账户，然后登出本地账户再切换用户的方法来绕开加密卷的问题，但是这个方法非常繁琐，我依旧希望在不损失安全的情况下快捷地登录我的
+    Active Directory 账户来访问内网资源。搜索了一圈，果然一大群 IT Admin 在抱怨这个事情……然后水果也没修掉这个问题（可以说是 by
+    design 了）。一个变通方法如下：</p><ol><li>打开目录工具，进入 Active Directory 设置并确保 Mobile Account
+    启用。Mobile Account 即缓存域凭据以在设备脱离域控的情况下可以使用本地缓存凭据鉴权并登录系统，在 Windows 上是默认使用的（虽然不叫 Mobile
+    Account）。具体如下图：</li></ol><img src="v2-30d0890ec218959648d4cde43df4909f.jpg" data-caption=""
+    data-size="normal" data-rawwidth="1478" data-rawheight="1734" data-watermark="watermark"
+    data-original-src="v2-30d0890ec218959648d4cde43df4909f" data-watermark-src="v2-07d4cfefc3f3dd15a5624e1c354d8f9a"
+    data-private-watermark-src=""><p>2. 做完这一步后，注销当前账户并重新登录 Active Directory 账户。正常情况下
+    macOS 会提示输入<b>本地管理员凭据</b>来创建一个 secureToken。输入凭据以继续。如果没有，见下一步。</p><p>3. 确认 secureToken
+    已经启用：</p><code lang="bash">BEN-MACBOOK:~ imbushuo$ sudo systemctl -secureTokenStatus
+    imbushuo
+
+    2018-06-02 13:27:14.090 sysadminctl [816:38319] Secure token is ENABLED for user
+    imbushuo</code><p>如果没有启用，使用命令</p><code lang="text">BEN-MACBOOK:~ imbushuo$ sudo
+    sysadminctl -secureTokenOn &lt;用户名&gt;</code><p>来打开 Secure Token。</p><p>4. 更新
+    PreBoot 数据。对于 FileVault 2 加密的磁盘：</p><code lang="text">BEN-MACBOOK:~ imbushuo$
+    sudo fdesetup sync</code><p>对于 APFS 加密卷：</p><code lang="text">BEN-MACBOOK:~ imbushuo$
+    sudo diskutil apfs updatePreboot disk1s1</code><p>卷名可能根据你的分区配置有所更改。</p><p><br></p><p>这样操作之后，已经登录过一次的
+    Active Directory 用户就会显示在 PreBoot 界面，并可以直接在 PreBoot 输入密码解锁卷并登录系统。这个方法也有一些问题：</p><p>-
+    如果 Active Directory 用户更新了密码（密码过期/管理员要求更改/在其他设备上更改了密码），PreBoot 需要重新同步。因此本地密码可能和目录不一致，对用户造成困扰。同理，如果用户因为管理原因（离职/离校/账户过期/账户被禁用）在目录中被注销或者禁止登录，PreBoot
+    也无法立即同步更改。</p><p>- 没有在这台 Mac 上登录过的 Active Directory 用户，需要一个本地用户或其他登录过的 AD 用户登录一次并登出后才能登录并使得自己的用户同步到
+    PreBoot 里。</p><p>- 如果是公用电脑，PreBoot 可能会被撑爆（几千个用户显示在那个屏幕？画美不看）。而且枚举登录过的用户名称在一些组织里是不妥的。
+    这种情况下又要数据安全又要目录登录的话，购买 iMac Pro （有自动加解密） 或者带有 TPM 的 PC。</p>'
+  href: /api/posts/37608083
+  isTitleImageFullScreen: false
+  likesCount: 12
+  links: {comments: /api/posts/37608083/comments}
+  meta: {next: null, previous: null}
+  publishedTime: '2018-06-02T13:57:08+08:00'
+  rating: none
+  slug: 37608083
+  snapshotUrl: ''
+  sourceUrl: ''
+  state: published
+  summary: ''
+  title: 让 FileVault 2 / APFS 加密卷和 Active Directory 共存
+  titleImage: ''
+  url: /p/37608083
+- author:
+    avatar: {id: v2-77acb5043344a66c89735d8fc03bcd66, template: 'https://pic1.zhimg.com/{id}_{size}.jpg'}
+    bio: 好忙啊
+    description: 'Surface Pro * 用户，可能准备拿 Scholarship 的钱买 Surface Studio。
+
+      小萌新/小透明/AS43126 Ops'
+    hash: 8e4d0fedc48068f5fb69da994751d27a
+    isBanned: false
+    isFollowed: false
+    isFollowing: false
+    isOrg: false
+    isOrgWhiteList: false
+    name: imbushuo
+    profileUrl: https://www.zhihu.com/people/imbushuo
+    slug: imbushuo
+    uid: 31857294966784
+  canComment: false
+  commentPermission: anyone
+  commentsCount: 2
+  content: "<p><a href=\"https://zhuanlan.zhihu.com/p/34572676\">这是上一篇文章的续集</a>。总的来说，差异不是特别大，但是也有一些细节上的不同。</p><img\
+    \ src=\"v2-f3772e53eadc9744f0e75c1dc29b496f.jpg\" data-caption=\"这是这只 $300 的手机。价格刚刚从美亚截图的\"\
+    \ data-size=\"normal\" data-rawwidth=\"1711\" data-rawheight=\"1019\" data-watermark=\"\
+    watermark\" data-original-src=\"v2-f3772e53eadc9744f0e75c1dc29b496f\" data-watermark-src=\"\
+    v2-d2c3e1afb48c04e8e19d64cc269f8814\" data-private-watermark-src=\"\"><p>众所周知，Windows\
+    \ Phone 8 和 Windows 10 Mobile 没有发布过正式的 AArch64 版本。所以即使在 Lumia 950, 950XL, HP Elite\
+    \ x3 之类的设备上，他们也是以 AArch32 模式运行的（向下兼容）。</p><p>从具体实现细节说，Snapdragon 808 和 810 以 AArch32\
+    \ 模式启动第一个核心并初始化（但是 TZ 是 AArch64 的），根据需求通过 Secure Monitor Call 来切换 PL1/EL1 的 bitness。Snapdragon\
+    \ 820 以 AArch64 模式启动第一个核心，根据需求在启动 Windows Phone UEFI 时进入 AArch32 的 EL1。</p><p><a\
+    \ href=\"https://github.com/imbushuo/lk\">所以在给 Lumia 移植了 LK 之后</a>，我们就有相对充足的 EL1\
+    \ 控制权（在高通设备上 EL2 和 EL3 是不受我们控制的）。因此我们也可以载入我们自己的 TianoCore Payload 到内存，然后通过 SMC\
+    \ 切换 bitness 并执行。<a href=\"https://github.com/imbushuo/boot-shim\">具体怎么从 Boot\
+    \ Manager 启动 LK，看这里。</a></p><p><b>UEFI 相关</b></p><p>首先在 ARM 上 UEFI 的初始化工作比 x86\
+    \ 通常要小很多，因为 UEFI 一般被作为一个 Secondary Bootloader 被载入，载入的时候，DDR 训练已经完成了，内存可以直接拿来用了。而且这些嵌入式设备有很多硬编码的参数。</p><p>剩下的内容并不是特别麻烦，<a\
+    \ href=\"http://efidroid.org/\">EFIDroid</a> 项目提供了很多不错的参考实现，直接拿来用就好。不过我重写了内存初始化（其实是\
+    \ MMU 和 HOB）部分来适应 Windows 的启动要求。</p><p>USB 还没来得及做，但是都是 Synposys 的 USB IP，可以参考\
+    \ RaspberryPiPkg 里的相关内容。估计 Clock 部分要和 EFIDroid 的驱动做集成。</p><p><a href=\"https://github.com/imbushuo/Lumia950XLPkg\"\
+    >一个正在进行中的 Lumia 950 XL 参考 UEFI 实现看这里。</a>目前代码还很乱。</p><p><br></p><p><b>UART</b></p><p>很不幸\
+    \ Lumia 950XL 没有外置的（唯一一个接了蓝牙）。所以我们用屏幕当串口来诊断一些问题。我把这个选项做成了一个 PCD，在我的实现发布里默认没开。其实其他\
+    \ Lumia 非 x50 代的都有能用的 UART 测试点，使用的是 1.8V UART（高通常见）。</p><p><br></p><p><b>多核启动</b></p><p>可以先看一下老狼的这篇文章，对多核启动有一个了解：<a\
+    \ href=\"https://zhuanlan.zhihu.com/p/31398178\">兄弟阋墙，CPU内核们是如何争当老大的？</a></p><p>在\
+    \ ARM 平台上，目前通行的几种多核启动办法如下：</p><ul><li>固件初始化所有核心，交给 OS 时全部可用（好像没看到谁用了）</li><li>固件启动在\
+    \ BSP 核心，固件在 DXE 阶段把所有核心上电并定向到指定内存地址并 Hold（其实是执行一段代码），等待 OS 启动后通过 GIC 或其他手段通知核心启动并开始运作。这种办法也称之为\
+    \ Parking。除了 Snapdragon 820 外的 Windows Phone, Windows RT 和 Windows 10 IoT 设备用的是这种办法，<a\
+    \ href=\"https://acpica.org/sites/acpica/files/MP%20Startup%20for%20ARM%20platforms.docx\"\
+    >具体实现规范参考这份文件</a>。</li><li>固件启动在 BSP 核心，将其他核心初始化到某个预期状态（或者不管），OS 启动后通过 PSCI 来启动核心。Snapdragon\
+    \ 820 的 Windows Phone 和 Windows 10 ARM 平板用的是这种办法。<a href=\"http://infocenter.arm.com/help/topic/com.arm.doc.den0022d/Power_State_Coordination_Interface_PDD_v1_1_DEN0022D.pdf\"\
+    >具体实现规范参考这份文件。</a></li></ul><p>第二种办法在核心运行的 Hold 伪代码如下：</p><code lang=\"text\"\
+    >Hold:\n   等一个中断过来，没有来就睡觉\n   判断一下是不是我要起床了（检查核心 ID），是的话跳转到指定内存地址并继续执行\n   不是我起床，回到\
+    \ Hold 重复</code><p>第三种办法直接向 EL2/3 发送 Hypervisor Call 或者 Secure Monitor Call。虽然\
+    \ Lumia 950 XL 所用的 Snapdragon 810 没有标注 PSCI 支持，但是实际上支持了一部分 PSCI 内容。PSCI CPU_ON\
+    \ 是没问题的，但是其他电源操作还是需要通过 SPMI 给 PMIC 发指令。所以我们在 ACPI 里标注了 PSCI 支持<b>（并要求 Hypervisor\
+    \ Call）</b>，但是 UEFI 库里的其他电源操作还是通过 PMIC 完成。</p><p>不过看上去 HVC PSCI 没法让 Linux 带起来。Linux\
+    \ 只能单核启动，尚未调查具体原因。</p><p><br></p><p><br></p><p>完成了这些内容后，Windows 就能启动了。不过把各种外设带起来，还需要挺长的时间。后面是几张图。</p><img\
+    \ src=\"v2-db5d2f14dbf3e9e6821f1a36346d8b60.jpg\" data-caption=\"\" data-size=\"\
+    normal\" data-rawwidth=\"4032\" data-rawheight=\"3024\" data-watermark=\"watermark\"\
+    \ data-original-src=\"v2-db5d2f14dbf3e9e6821f1a36346d8b60\" data-watermark-src=\"\
+    v2-cb395d2516b46a8df0a066717b7000f7\" data-private-watermark-src=\"\"><img src=\"\
+    v2-05ecee32efa5b3ab9748b79c7be974a2.jpg\" data-caption=\"\" data-size=\"normal\"\
+    \ data-rawwidth=\"4032\" data-rawheight=\"3024\" data-watermark=\"watermark\"\
+    \ data-original-src=\"v2-05ecee32efa5b3ab9748b79c7be974a2\" data-watermark-src=\"\
+    v2-571c0aa539a94df53a1d65ff70f60d36\" data-private-watermark-src=\"\"><img src=\"\
+    v2-ca7bd6d2ecadddc0a72f107eade6d8d2.jpg\" data-caption=\"\" data-size=\"normal\"\
+    \ data-rawwidth=\"4032\" data-rawheight=\"3024\" data-watermark=\"watermark\"\
+    \ data-original-src=\"v2-ca7bd6d2ecadddc0a72f107eade6d8d2\" data-watermark-src=\"\
+    v2-be91972d9e7a9d37428fbcadf0d84322\" data-private-watermark-src=\"\"><p>还有几张号外。</p><img\
+    \ src=\"v2-18fb4a202afcc60f8def94addee37225.jpg\" data-caption=\"\" data-size=\"\
+    normal\" data-rawwidth=\"4032\" data-rawheight=\"3024\" data-watermark=\"watermark\"\
+    \ data-original-src=\"v2-18fb4a202afcc60f8def94addee37225\" data-watermark-src=\"\
+    v2-00e6ae743b9b3f12ace769cea78ff3d6\" data-private-watermark-src=\"\"><img src=\"\
+    v2-2418a3bbe3d40dde8942239d6c4988d4.jpg\" data-caption=\"\" data-size=\"normal\"\
+    \ data-rawwidth=\"4032\" data-rawheight=\"3024\" data-watermark=\"watermark\"\
+    \ data-original-src=\"v2-2418a3bbe3d40dde8942239d6c4988d4\" data-watermark-src=\"\
+    v2-f23bed2250204dca05b61c59d4d855db\" data-private-watermark-src=\"\"><p></p>"
+  href: /api/posts/36439397
+  isTitleImageFullScreen: false
+  likesCount: 86
+  links: {comments: /api/posts/36439397/comments}
+  meta: {next: null, previous: null}
+  publishedTime: '2018-05-05T02:16:42+08:00'
+  rating: none
+  slug: 36439397
+  snapshotUrl: ''
+  sourceUrl: ''
+  state: published
+  summary: ''
+  title: 在 $300 的手机上启动 Windows 10 ARM64
+  titleImage: https://pic2.zhimg.com/v2-bc3069c5ffbfd399738fdf8e37fa1152_r.jpg
+  url: /p/36439397
+- author:
+    avatar: {id: v2-77acb5043344a66c89735d8fc03bcd66, template: 'https://pic1.zhimg.com/{id}_{size}.jpg'}
+    bio: 好忙啊
+    description: 'Surface Pro * 用户，可能准备拿 Scholarship 的钱买 Surface Studio。
+
+      小萌新/小透明/AS43126 Ops'
+    hash: 8e4d0fedc48068f5fb69da994751d27a
+    isBanned: false
+    isFollowed: false
+    isFollowing: false
+    isOrg: false
+    isOrgWhiteList: false
+    name: imbushuo
+    profileUrl: https://www.zhihu.com/people/imbushuo
+    slug: imbushuo
+    uid: 31857294966784
+  canComment: false
+  commentPermission: anyone
+  commentsCount: 5
+  content: <p>我也不知道是不是真的（</p><p>写了一遍也确实理解了叛大说的 950XL 的渲染 upscale 上去的是咋回事了（。</p><img
+    src="v2-eac9ee3e81553d51b10c1859ebad8603.jpg" data-caption="" data-size="normal"
+    data-rawwidth="3024" data-rawheight="4032" data-watermark="watermark" data-original-src="v2-eac9ee3e81553d51b10c1859ebad8603"
+    data-watermark-src="v2-bb24fd07dfff341dd0a4893209b49377" data-private-watermark-src=""><img
+    src="v2-76f8543b68c703eb7584f057253de44c.jpg" data-caption="" data-size="normal"
+    data-rawwidth="4032" data-rawheight="3024" data-watermark="" data-original-src=""
+    data-watermark-src="" data-private-watermark-src=""><p></p>
+  href: /api/posts/35185005
+  isTitleImageFullScreen: false
+  likesCount: 11
+  links: {comments: /api/posts/35185005/comments}
+  meta: {next: null, previous: null}
+  publishedTime: '2018-04-01T18:17:12+08:00'
+  rating: none
+  slug: 35185005
+  snapshotUrl: ''
+  sourceUrl: ''
+  state: published
+  summary: ''
+  title: 愚人节快乐
+  titleImage: https://pic2.zhimg.com/v2-d2d19023f80936f2393749c155caff1e_r.jpg
+  url: /p/35185005
+- author:
+    avatar: {id: v2-77acb5043344a66c89735d8fc03bcd66, template: 'https://pic1.zhimg.com/{id}_{size}.jpg'}
+    bio: 好忙啊
+    description: 'Surface Pro * 用户，可能准备拿 Scholarship 的钱买 Surface Studio。
+
+      小萌新/小透明/AS43126 Ops'
+    hash: 8e4d0fedc48068f5fb69da994751d27a
+    isBanned: false
+    isFollowed: false
+    isFollowing: false
+    isOrg: false
+    isOrgWhiteList: false
+    name: imbushuo
+    profileUrl: https://www.zhihu.com/people/imbushuo
+    slug: imbushuo
+    uid: 31857294966784
+  canComment: false
+  commentPermission: anyone
+  commentsCount: 2
+  content: "<p><b>Disclaimer: From a customer's perspective, you might not be interested\
+    \ in this article.</b></p><p><br></p><p><b>Abstract</b></p><p>Windows on ARM is\
+    \ not a new topic. There are some guys attempted to bring up Windows RT and Windows\
+    \ 10 on Qemu (ARM/AArch64 target). <a href=\"https://twitter.com/NTAuthority/status/961366478292430849\"\
+    >It even runs on Raspberry Pi 3</a>. Obviously it is not a Snapdragon 835-only\
+    \ thing. We can give it a hand on our own Single Board Computers.</p><p>This article\
+    \ covers some important details in Dragonboard 410c SBC's aa64 UEFI implementation.</p><p><br></p><p><b>Wait...Why\
+    \ this article is written in English?</b></p><p>Because my Chinese Input Method\
+    \ is broken (it frequently hangs Visual Studio Code). Realizing there's no need\
+    \ for me to use Chinese IME frequently, I decided to uninstall it for a more pleasant\
+    \ experience.</p><p><br></p><p><b>Contents</b></p><ul><li>Windows Boot Requirements</li><li>Bootstrapping\
+    \ your own EDK2/TianoCore UEFI</li><li>Memory Allocation / Memory Management Unit</li><li>UEFI\
+    \ Flash Definition</li><li>First-stage Bootloader (Little Kernel)</li><li>Persistent\
+    \ NVRAM Support</li><li>A \"Working\" RTC</li><li>Multi-processor startup (PSCI)</li></ul><p><br></p><p><b>Windows\
+    \ Boot Requirements (AArch64):</b></p><ul><li>AArch64 architecture processor.\
+    \ It seems that AArch64 cryptography extension is required too (Raspberry Pi 3\
+    \ randomly throws UNSUPPORTED_PROCESSOR bugcheck. The BCM2837 SoC doesn't implement\
+    \ this extension). According to known source, this requirement is probably removed\
+    \ in RS4.</li><li>For multi-processor systems, either <a href=\"https://acpica.org/sites/acpica/files/MP%20Startup%20for%20ARM%20platforms.docx\"\
+    >Microsoft ARM Multi-processor Parking Protocol</a> or <a href=\"http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.den0022b/index.html\"\
+    >ARM PSCI interface</a> shall be implemented. All current Windows 10 IoT ARM32\
+    \ platforms implement former one.</li><li>A working interrupt controller. Most\
+    \ AArch64 SoC cores include ARM GIC, so there's little work to do here. The only\
+    \ exception I know is BCM2837. Windows actually has inbox Broadcom interrupt controller\
+    \ support (for the sake of Raspberry Pi). But if your SoC has additional third\
+    \ party interrupt controller, you need to supply your own HAL extension library.\
+    \ There is few documentation for this available though...</li><li>A working processor\
+    \ timer. If not, supply your own HAL extension library.</li><li><a href=\"https://docs.microsoft.com/en-us/windows-hardware/drivers/bringup/uefi-requirements-that-apply-to-all-windows-platforms\"\
+    >Complete ACPI 5.1/6.0 and UEFI 2.3+ implementation</a>. Do not try to use Das\
+    \ U-Boot's EFI implementation; it's broken.</li></ul><p>These requirements are\
+    \ fairly similar to <a href=\"http://infocenter.arm.com/help/topic/com.arm.doc.den0044b/DEN0044B_Server_Base_Boot_Requirements.pdf\"\
+    >ARM SBBR certification requirements</a>. If your SBC has a working EDK2/TianoCore\
+    \ UEFI, then you are probably good to go. Bootstrapping your own EDK2 is pretty\
+    \ easy too.</p><p><br></p><p><b>Bootstrapping your own EDK2/TianoCore</b></p><p>The\
+    \ board I used (DragonBoard 410c) doesn't have a known EDK2/TianoCore implementation.\
+    \ So I have to build my own. <a href=\"https://github.com/andreiw/RaspberryPiPkg/\"\
+    >This repository for Raspberry Pi 3</a> is a good start point and reference for\
+    \ you.</p><p>You need to do these things in UEFI:</p><ul><li>Initialize serial\
+    \ output (for debugging) and Memory Management Unit (MMU). Refer to your platform\
+    \ datasheet for device memory address allocation.</li><li>Retrieve required information\
+    \ from pre-UEFI environment and build Hand-off Blocks (HOB) for DXE phase</li><li>Initialize\
+    \ processor (exception vector, etc.) in DXE phase.</li><li>Initialize required\
+    \ peripherals (GPIO, GIC, eMMC, USB, RTC, Display...) in DXE phase.</li><li>Initialize\
+    \ UEFI services (variable services) in DXE phase.</li><li>Jump to BDS phase, start\
+    \ Windows Boot Manager or something else.</li></ul><p><br></p><p><b>Memory Allocation\
+    \ / Memory Management Unit</b></p><p>Memory allocation is a platform-specific\
+    \ thing. Check your platform HRD to get some idea about MMU and memory allocation.\
+    \ For Snapdragon 410, check out Qualcomm LM80-P0436-13.</p><img src=\"v2-ab6085d8195218131e77ab86c3661afb.jpg\"\
+    \ data-caption=\"\" data-size=\"normal\" data-rawwidth=\"1191\" data-rawheight=\"\
+    1193\"><p><br></p><p><b>UEFI Flash Definition</b></p><p>Our UEFI FD starts at\
+    \ 0x80200000. Update your tokens in platform definition and flash definition:</p><code\
+    \ lang=\"text\">[FD.Apq8016_EFI]\nBaseAddress   = 0x80200000|gArmTokenSpaceGuid.PcdFdBaseAddress\
+    \  #The base address of the FLASH Device.\nSize          = 0x00120000|gArmTokenSpaceGuid.PcdFdSize\
+    \         #The size in bytes of the FLASH Device\nErasePolarity = 1\nBlockSize\
+    \     = 0x200\nNumBlocks     = 0x900\n\n# 512 bytes of configuration header &amp;\
+    \ 8 bytes of image header\n0x00000000|0x00120000\ngArmTokenSpaceGuid.PcdFvBaseAddress|gArmTokenSpaceGuid.PcdFvSize\n\
+    FV = FVMAIN_COMPACT</code><p>And the first piece code should be your SEC initialization\
+    \ code (without relocation).</p><code lang=\"text\">[FV.FVMAIN_COMPACT]\nFvAlignment\
+    \        = 8\nERASE_POLARITY     = 1\nMEMORY_MAPPED      = TRUE\nSTICKY_WRITE\
+    \       = TRUE\nLOCK_CAP           = TRUE\nLOCK_STATUS        = TRUE\nWRITE_DISABLED_CAP\
+    \ = TRUE\nWRITE_ENABLED_CAP  = TRUE\nWRITE_STATUS       = TRUE\nWRITE_LOCK_CAP\
+    \     = TRUE\nWRITE_LOCK_STATUS  = TRUE\nREAD_DISABLED_CAP  = TRUE\nREAD_ENABLED_CAP\
+    \   = TRUE\nREAD_STATUS        = TRUE\nREAD_LOCK_CAP      = TRUE\nREAD_LOCK_STATUS\
+    \   = TRUE\n\n  INF DragonboardPkg/Sec/Sec.inf</code><p>Little Kernel (mentioned\
+    \ below) will be responsible for jumping into UEFI FD at 0x80200000 and handing\
+    \ off execution. If you want, you can actually removes Android-specific header\
+    \ and device tree validation in LK (<i>apps/aboot.c</i>).</p><p><br></p><p><b>First-stage\
+    \ bootloader (Little Kernel)</b></p><p>DragonBoard 410c uses ARM Secure Monitor\
+    \ Call to switch to AArch64 mode (See Qualcomm LM80-P0436-1 for more information).\
+    \ The stock close-sourced SBL does not recognize AArch64 ELF files (later model\
+    \ should). LK performs basic platform initialization (UART, eMMC, MMU, etc.) <a\
+    \ href=\"https://github.com/robclark/lk\">A modified variant LK also initializes\
+    \ FrameBuffer for U-Boot.</a> We can make it work for our UEFI too. </p><p>Windows\
+    \ requires UEFI provide a BGRA FrameBuffer. To achieve this, we need to modify\
+    \ pixel unpack pattern in <i>platform/msm_shared/mdp5.c</i>:</p><code lang=\"\
+    c\">case 32:\n    /* Windows requires a BGRA FB */\n    writel(0x000236FF, pipe_base\
+    \ + PIPE_SSPP_SRC_FORMAT);\n    writel(0x03020001, pipe_base + PIPE_SSPP_SRC_UNPACK_PATTERN);</code><p>You\
+    \ can either specify a hard-coded address for FrameBuffer, or have a random piece\
+    \ of memory block to transfer information (pixel format, width, height, etc.)\
+    \ to UEFI. UEFI SEC phase retrieve the information, allocate HOB block and transfer\
+    \ information to DXE phase. A simple FrameBuffer driver retrieve information from\
+    \ HOB block, initializes UEFI Graphics Output Protocol. For optimal performance,\
+    \ initialize this piece of memory block as <b>write-through</b> cache memory in\
+    \ MMU initialization.</p><p><br></p><p><b>Persistent NVRAM Support</b></p><p>For\
+    \ persistent NVRAM support, it's a good idea to use eMMC as storage device. <a\
+    \ href=\"https://github.com/b-man/OpenPlatformPkg/blob/brvsupport_v1/Drivers/Variable/BlockRamVariableDxe/BlockRamVariableDxe.c\"\
+    >This implementation</a> demonstrates how to simulate NVRAM using eMMC and a piece\
+    \ of memory. I slightly modified it make it work for Qualcomm devices:</p><ul><li>If\
+    \ eMMC NVRAM region is corrupted or uninitialized, provision it and perform a\
+    \ platform warm reset so I don't get a synchronous exception in volatile variable\
+    \ initialization phase.</li><li>Modify dependency relationship to prevent \"device\
+    \ not found\" error in BlockRamVariable DXE initialization.</li></ul><p><br></p><p><b>A\
+    \ \"working\" RTC</b></p><p>Windows Boot Manager depends on a <b>\"working\"</b>\
+    \ Real Time Clock for miscellaneous purposes. APQ8016/MSM8916 has a RTC on its\
+    \ PMIC processor PM8916. To access RTC services, read/write SPMI registers (see\
+    \ Qualcomm LM80-P0436-36). If you are lazy, just use Xen fake RTC in ArmVirtPkg.</p><img\
+    \ src=\"v2-585f9dec06f71b196ba608a7df804ea3.jpg\" data-caption=\"RTC HRD in LM80-P0436-36\"\
+    \ data-size=\"normal\" data-rawwidth=\"1164\" data-rawheight=\"974\"><p>To enable\
+    \ PM8916 RTC, set SPMI register 0x6046 to <i>enabled</i> state, then read 0x6048\
+    \ and three following bits:</p><code lang=\"text\">EFI_STATUS Status = EFI_SUCCESS;\n\
+    UINTN secs = 0;\nUINT32 readNum = 0;\nUINT8 value[NUM_8_BIT_RTC_REGS];\n  \nfor\
+    \ (UINTN i = 0; i &lt; 4; i++)\n{\n  Status = Pm8916Protocol-&gt;ReadPmic(\n \
+    \   Pm8916Protocol,\n    PM8916_RTC_READ_ADDR + i,\n    &amp;value[i],\n    1,\n\
+    \    &amp;readNum\n  );\n\n  if (EFI_ERROR(Status))\n  {\n    DEBUG((EFI_D_ERROR,\
+    \ \"Failed to read PMIC RTC epoch bit %d\\n\", i));\n    return EFI_DEVICE_ERROR;\n\
+    \  }\n\n  readNum = 0;\n}\n\nif (value[0] &lt; 0)\n{\n  DEBUG((EFI_D_ERROR, \"\
+    PM8916 RTC reported error.\\n\"));\n  return EFI_DEVICE_ERROR;\n}\n\n// Convert\
+    \ RTC epoch time\nsecs = value[0] | (value[1] &lt;&lt; 8) | (value[2] &lt;&lt;\
+    \ 16) | (value[3] &lt;&lt; 24);\n// Remember our offset\nsecs = secs + mRtcOffset;\n\
+    \n// Convert UNIX epoch to EFI time.\nEpochToEfiTime(secs, Time);</code><p>Note:\
+    \ I implemented my own PMIC protocol called <i>PM8916Protocol </i>that read/writes\
+    \ PMIC register on SPMI bus, slave #0. This RTC library is based on Xen face RTC\
+    \ library from ArmVirtPkg.</p><p><br></p><p><b>4KB / 64KB Page Table</b></p><p>For\
+    \ most single board computers, you will probably hit issues in ExitBootServices.\
+    \ EDK2 assumes runtime world follows 64KB/Page memory allocation, while most single\
+    \ board computers supply only less than 2GB memory. On these boards, MMU will\
+    \ run in 4KB PT mode. To resolve the issue, go to <i>MdePkg/Include/AArch64/ProcessorBind.h</i>:</p><code\
+    \ lang=\"c\">///\n/// The stack alignment required for AARCH64\n///\n#define CPU_STACK_ALIGNMENT\
+    \  16\n\n///\n/// Page allocation granularity for AARCH64\n///\n#define DEFAULT_PAGE_ALLOCATION_GRANULARITY\
+    \   (0x1000)\n\n///\n/// For the sake of our SBCs\n///\n#define RUNTIME_PAGE_ALLOCATION_GRANULARITY\
+    \   (0x1000)</code><p>Set runtime page allocation granularity to 0x1000 (4KB).\
+    \ If your board has memory larger than 2GB, you should not modify this value;\
+    \ instead, check your memory allocation. <a href=\"https://www.zhihu.com/question/53987695/answer/137394447\"\
+    >There's another interesting case with 4KB/64KB page on Cortex A53</a>.</p><p><br></p><p><b>ARM\
+    \ Erratum</b></p><p>I randomly hit crashes (synchronous exception) during my UEFI\
+    \ development. After some investigation, it seems that the problem is related\
+    \ to load/store commands. (See <a href=\"http://infocenter.arm.com/help/topic/com.arm.doc.epm048406/Cortex_A53_MPCore_Software_Developers_Errata_Notice.pdf\"\
+    >ARM Errata 835769, 843419</a>) To prevent random crashes, add these two flags\
+    \ to your GCC compiler:</p><code lang=\"text\">-mfix-cortex-a53-835769 -mfix-cortex-a53-843419</code><p>If\
+    \ you don't correctly handle ARM SIMD instruction traps, set these switches too:</p><code\
+    \ lang=\"text\">-mstrict-align -mgeneral-regs-only</code><p><br></p><p><b>Multi-Processor\
+    \ Startup (PSCI)</b></p><p>For platforms that implement ARM PSCI, indicate PSCI\
+    \ support in ACPI FADT table:</p><code lang=\"text\">EFI_ACPI_6_0_HW_REDUCED_ACPI\
+    \ | EFI_ACPI_6_0_LOW_POWER_S0_IDLE_CAPABLE,    // UINT32     Flags\n{\n  EFI_ACPI_6_0_EMBEDDED_CONTROLLER,\n\
+    \  0,\n  0,\n  EFI_ACPI_6_0_DWORD,\n  0x009020B4\n},                         \
+    \                                               // EFI_ACPI_6_0_GENERIC_ADDRESS_STRUCTURE\
+    \  ResetReg\n1,                                                              \
+    \          // UINT8      ResetValue\nEFI_ACPI_6_0_ARM_PSCI_COMPLIANT,        \
+    \                                  // UINT16     ArmBootArchFlags\nEFI_ACPI_6_0_FIXED_ACPI_DESCRIPTION_TABLE_MINOR_REVISION,\
+    \                 // UINT8      MinorRevision</code><p>Typically you don't need\
+    \ HVC call for PSCI. If you did so (and your platform doesn't support HVC call\
+    \ for PSCI), you will get a INTERNAL_POWER_ERROR bugcheck with first parameter\
+    \ of <b>0x0000BEEF</b>.</p><p>If you indicates PSCI support, you don't have to\
+    \ provide parking protocol version in your ACPI MADT table. Simply set it to 0.\
+    \ Here's one example:</p><code lang=\"text\">[02Ch 0044   1]                Subtable\
+    \ Type : 0B [Generic Interrupt Controller]\n[02Dh 0045   1]                  \
+    \     Length : 50\n[02Eh 0046   2]                     Reserved : 0000\n[030h\
+    \ 0048   4]         CPU Interface Number : 00000000\n[034h 0052   4]         \
+    \       Processor UID : 00000000\n[038h 0056   4]        Flags (decoded below)\
+    \ : 00000001\n                           Processor Enabled : 1\n          Performance\
+    \ Interrupt Trigger Mode : 0\n          Virtual GIC Interrupt Trigger Mode : 0\n\
+    [03Ch 0060   4]     Parking Protocol Version : 00000000\n[040h 0064   4]     \
+    \   Performance Interrupt : 00000017\n[044h 0068   8]               Parked Address\
+    \ : 0000000080301000\n[04Ch 0076   8]                 Base Address : 0000000000000000\n\
+    [054h 0084   8]     Virtual GIC Base Address : 0000000000000000\n[05Ch 0092  \
+    \ 8]  Hypervisor GIC Base Address : 0000000000000000\n[064h 0100   4]        Virtual\
+    \ GIC Interrupt : 00000000\n[068h 0104   8]   Redistributor Base Address : 0000000000000000\n\
+    [070h 0112   8]                    ARM MPIDR : 0000000000000000\n[078h 0120  \
+    \ 1]             Efficiency Class : 00\n[079h 0121   3]                     Reserved\
+    \ : 000000</code><p><a href=\"https://github.com/ARM-software/edk2/tree/master/ArmPlatformPkg/ArmJunoPkg/AcpiTables\"\
+    >See ARM Juno reference platform to get some idea about crafting ACPI tables.</a>\
+    \ </p><p><br></p><p><b>That's it! Welcome to Windows 10 Userland.</b></p><img\
+    \ src=\"v2-2ad32939dad58572cfe6751363414d1e.jpg\" data-caption=\"\" data-size=\"\
+    normal\" data-rawwidth=\"4032\" data-rawheight=\"3024\"><p>Spend some nights writing\
+    \ Windows drivers. :P</p><p></p>"
+  href: /api/posts/34572676
+  isTitleImageFullScreen: true
+  likesCount: 41
+  links: {comments: /api/posts/34572676/comments}
+  meta: {next: null, previous: null}
+  publishedTime: '2018-03-15T12:25:20+08:00'
+  rating: none
+  slug: 34572676
+  snapshotUrl: ''
+  sourceUrl: ''
+  state: published
+  summary: ''
+  title: Bringing up Windows 10 AArch64 on a $50 Single Board Computer
+  titleImage: https://pic1.zhimg.com/v2-c1f8a5398d371827b0b0ea257551469b_r.jpg
+  url: /p/34572676
