@@ -32,3 +32,8 @@ def download_file(url: str, dst: str) -> None:
             for chunk in r:
                 f.write(chunk)
     return filename
+
+
+def save_file(content: str, path: str) -> None:
+    with open(path, mode="w", encoding="utf8") as f:
+        f.write(content)

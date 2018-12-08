@@ -39,8 +39,12 @@ def convert(column: str, destination_folder_path: str) -> None:
     for article in api.articles(column):
         pid = article["id"]
         logger.info("Downloading article #%d %s - %s", pid, article["title"], article["author"]["name"])
-        os.makedirs(os.path.join(destination_folder_path, str(pid)), exist_ok=True)
-        generate_markdown(os.path.join(destination_folder_path, str(pid), "index.md"), {
+        article_base_dir = os.path.join(destination_folder_path, str(pid))
+        os.makedirs(article_base_dir, exist_ok=True)
+        # save a copy of the original response
+        save_file(article, os.path.join(article_base_dir, "article.json"))
+        # save the transformed document
+        generate_markdown(os.path.join(article_base_dir, "index.md"), {
             # official
             "title": article["title"],
             "author": article["author"]["name"],
