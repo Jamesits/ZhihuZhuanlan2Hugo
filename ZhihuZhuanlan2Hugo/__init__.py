@@ -1,27 +1,19 @@
-import os
 import logging
-import yaml
-import api
-import sys
-from datetime import datetime
-from markdownify import markdownify
+import os
 from distutils.dir_util import copy_tree
 
-src_list = sys.argv[1:-1]
-src_template = "./site_template"
-dst_base = sys.argv[-1]
+import yaml
 
+from ZhihuZhuanlan2Hugo import api
+from ZhihuZhuanlan2Hugo.markdownify import markdownify
+from ZhihuZhuanlan2Hugo.utils import *
 
 logging.basicConfig(format='%(asctime)-15s|%(name)s|%(levelname)-6s: %(message)s')
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 
-def convert_time(timestamp: int) -> str:
-    return datetime.fromtimestamp(timestamp).isoformat()
-
-
-def generate_markdown(path: str, front_matter: object, content: str = "")->None:
+def generate_markdown(path: str, front_matter: object, content: str = "") -> None:
     with open(path, mode="w", encoding="utf8") as f:
         f.write("---\n")
         f.write(yaml.dump(front_matter, allow_unicode=True, default_flow_style=False))
@@ -63,7 +55,14 @@ def convert(column: str, destination_folder_path: str) -> None:
         }, markdownify(article["content"]))
 
 
-if __name__ == "__main__":
+def main(*args):
+    if len(args) < 2:
+        logger.fatal("Too few arguments")
+
+    src_list = args[1:-1]
+    src_template = "./site_template"
+    dst_base = args[-1]
+
     # generate site skeleton
     logger.info("Copying site template...")
     copy_tree(src_template, dst_base)

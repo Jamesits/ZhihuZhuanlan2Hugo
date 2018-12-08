@@ -1,9 +1,9 @@
 # This is a derived work from https://github.com/matthewwithanm/python-markdownify
 
-from bs4 import BeautifulSoup, NavigableString
 import re
-import six
 
+import six
+from bs4 import BeautifulSoup, NavigableString
 
 convert_heading_re = re.compile(r'convert_h(\d+)')
 line_beginning_re = re.compile(r'^', re.MULTILINE)
