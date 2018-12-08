@@ -2,6 +2,7 @@ languageCode = "zh-cn"
 title = "My New Hugo Site"
 theme = "hugo-now"
 enableEmoji = false
+relativeURLs = true
 
 [blackfriday]
   smartypants = false

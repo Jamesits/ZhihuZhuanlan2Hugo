@@ -1,5 +1,4 @@
 import logging
-import os
 from distutils.dir_util import copy_tree
 
 import yaml
@@ -36,7 +35,7 @@ def convert(column: str, destination_folder_path: str) -> None:
     }
     generate_markdown(os.path.join(destination_folder_path, "_index.md"), index_metadata)
 
-    # get files
+    # get individual articles
     for article in api.articles(column):
         pid = article["id"]
         logger.info("Downloading article #%d %s - %s", pid, article["title"], article["author"]["name"])
@@ -52,7 +51,7 @@ def convert(column: str, destination_folder_path: str) -> None:
 
             # custom
             "origin_url": article["url"],
-        }, markdownify(article["content"]))
+        }, markdownify(article["content"], os.path.join(destination_folder_path, str(pid))))
 
 
 def main(*args) -> None:

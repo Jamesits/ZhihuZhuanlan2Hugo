@@ -1,8 +1,4 @@
-import requests
-
 from ZhihuZhuanlan2Hugo.utils import *
-
-user_agent = "ZhihuZhuanlan2Hugo.py (+https://github.com/Jamesits/ZhihuZhuanlan2Hugo"
 
 
 def get_column_metadata(slug: str) -> typing.Dict:

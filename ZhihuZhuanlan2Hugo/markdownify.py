@@ -1,9 +1,15 @@
 # This is a derived work from https://github.com/matthewwithanm/python-markdownify
 
+import logging
 import re
+from urllib.parse import urlparse
 
 import six
 from bs4 import BeautifulSoup, NavigableString
+
+from ZhihuZhuanlan2Hugo.utils import *
+
+logger = logging.getLogger(__name__)
 
 convert_heading_re = re.compile(r'convert_h(\d+)')
 line_beginning_re = re.compile(r'^', re.MULTILINE)
@@ -40,7 +46,8 @@ class MarkdownConverter(object):
     class Options(DefaultOptions):
         pass
 
-    def __init__(self, **options):
+    def __init__(self, dst: str, **options):
+        self.dst = dst
         # Create an options dictionary. Use DefaultOptions as a base so that
         # it doesn't have to be extended.
         self.options = _todict(self.DefaultOptions)
@@ -182,16 +189,43 @@ class MarkdownConverter(object):
         return '**%s**' % text if text else ''
 
     def convert_img(self, el, text):
+        """
+        Note: Zhihu generates 2 <image> tag for every image:
+        <figure>
+        <noscript>
+        <img src=\"https://pic1.zhimg.com/e2f5fdf6d2db7825f517e4dd04b9e94c_b.jpg\" data-rawwidth=\"837\" data-rawheight=\"166\" class=\"origin_image zh-lightbox-thumb\" width=\"837\" data-original=\"https://pic1.zhimg.com/e2f5fdf6d2db7825f517e4dd04b9e94c_r.jpg\">
+        </noscript>
+        <img src=\"data:image/svg+xml;utf8,&lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='837'%20height='166'&gt;&lt;/svg&gt;\" data-rawwidth=\"837\" data-rawheight=\"166\" class=\"origin_image zh-lightbox-thumb lazy\" width=\"837\" data-original=\"https://pic1.zhimg.com/e2f5fdf6d2db7825f517e4dd04b9e94c_r.jpg\" data-actualsrc=\"https://pic1.zhimg.com/e2f5fdf6d2db7825f517e4dd04b9e94c_b.jpg\">
+        </figure>
+        :param el:
+        :param text:
+        :return:
+        """
+        # if the image is not a svg placeholder, we ignore it and return early
+        real_src = el.attrs.get('src', None)
+        if real_src is None or not str(real_src).startswith("data:image/svg+xml"):
+            return ""
+
         alt = el.attrs.get('alt', None) or ''
-        src = el.attrs.get('src', None) or ''
+        src = el.attrs.get('data-original', None) \
+              or el.attrs.get('data-actualsrc', None) \
+              or el.attrs.get('src', None) \
+              or ''
         title = el.attrs.get('title', None) or ''
         title_part = ' "%s"' % title.replace('"', r'\"') if title else ''
-        return '![%s](%s%s)' % (alt, src, title_part)
+
+        # do we need to download the image?
+        relative_src = src
+        if urlparse(src).netloc.endswith("zhimg.com"):
+            logger.info("Downloading image %s", src)
+            relative_src = "./" + retry(download_file, 3, src, self.dst)
+
+        return '[![%s](%s%s)](%s)' % (alt, relative_src, title_part, src)
 
     def convert_code(self, el, text):
         # TODO: language tag detection
         return '```\n' + text.strip() + '\n```\n'
 
 
-def markdownify(html, **options):
-    return MarkdownConverter(**options).convert(html)
+def markdownify(html, dst, **options):
+    return MarkdownConverter(dst, **options).convert(html)
