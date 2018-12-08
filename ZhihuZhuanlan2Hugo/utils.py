@@ -1,7 +1,8 @@
+import typing
 from datetime import datetime
 
 
-def retry(func: callable, retry_times: int, *args, **kwargs) -> "Any":
+def retry(func: callable, retry_times: int, *args, **kwargs) -> typing.Any:
     count = retry_times
     e = None
     while count > 0:
