@@ -116,10 +116,22 @@ def convert(column: str, destination_folder_path: str) -> None:
     logger.debug("Getting metadata...")
     j = api.get_column_metadata(column)
     index_metadata = {
+        # official
         "title": j["title"],
         "description": j["description"],
         "author": j["author"]["name"],
+        "tags": [x["name"] for x in j["topics"]],
+        "isCJKLanguage": True,
+        "date": convert_time(j["created"]),
+        "lastmod": convert_time(j["updated"]),
+
+        # custom
+        "article_count": j["articles_count"],
+        "follower_count": j["followers"],
+
     }
+    if j["image_url"] != "":
+        index_metadata["title_image_url"] = download_file(j["image_url"], destination_folder_path)
     generate_markdown(os.path.join(destination_folder_path, "_index.md"), index_metadata)
 
     # get individual articles
