@@ -185,7 +185,7 @@ class MarkdownConverter(object):
             el = el.parent
         if nested:
             text = '\n' + self.indent(text, 1)
-        return text
+        return text + '\n'
 
     convert_ul = convert_list
     convert_ol = convert_list
@@ -202,7 +202,7 @@ class MarkdownConverter(object):
                 el = el.parent
             bullets = self.options['bullets']
             bullet = bullets[depth % len(bullets)]
-        return '%s %s\n' % (bullet, text or '')
+        return '%s %s\n' % (bullet, text.strip('\n') or '')
 
     def convert_p(self, el, text):
         return '%s\n\n' % text if text else ''
