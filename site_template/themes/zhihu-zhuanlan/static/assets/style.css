@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 body,
@@ -17,13 +19,67 @@ html:lang(zh-CN) {
                 sans-serif;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
+.nav-container {
+  box-shadow: 0 1px 3px rgba(26,26,26,.1);
 }
 
-header>*, header>div>* {
-  display: inline-block;
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 52px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.nav>* {
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.site-icon {
+  margin: auto;
+  letter-spacing: 0.2em;
+  padding-right: 12px;
+  border-right: 1px solid #ebebeb;
+}
+
+.nav img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: auto 12px auto 16px;
+}
+
+.nav .column-title {
+  height: 34px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  position: relative;
+  top: 2px;
+}
+
+.nav .column-title p {
+  color: #8590a6;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.nav .column-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav .column-title h1 {
+  font-weight: 600;
+  font-synthesis: style;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 auto;
 }
 
 a {
@@ -91,8 +147,6 @@ article .content ul, article .content ol {
   color: #444;
   font-size: 15px;
   line-height: 1.1;
-  margin-block-start: 0;
-  margin-block-end: 0;
 }
 
 .people p {
@@ -162,13 +216,9 @@ article .content ul, article .content ol {
   font-size: 15px;
   line-height: initial;
   color: #175199;
-  margin-block-start: 0;
-  margin-block-end: 0;
 }
 
 .column p {
   font-size: 14px;
   line-height: 21px;
-  margin-block-start: 0;
-  margin-block-end: 0;
 }
