@@ -2,7 +2,7 @@
 
 import logging
 import re
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote
 
 import six
 from bs4 import BeautifulSoup, NavigableString
@@ -23,6 +23,10 @@ ATX = 'atx'
 ATX_CLOSED = 'atx_closed'
 UNDERLINED = 'underlined'
 SETEXT = UNDERLINED
+
+language_tag_mapping = {
+    "text": "",
+}
 
 
 def escape(text):
@@ -83,8 +87,9 @@ class MarkdownConverter(object):
         return text
 
     def process_text(self, text):
+        # prevent formating problems in code processing
         #return escape(whitespace_re.sub(' ', text or ''))
-        return text or ''
+        return escape(text) or ''
 
     def __getattr__(self, attr):
         # Handle headings
@@ -120,11 +125,28 @@ class MarkdownConverter(object):
         return '%s\n%s\n\n' % (text, pad_char * len(text)) if text else ''
 
     def convert_a(self, el, text):
+        """
+        Convert <a> tag to markdown syntax.
+        Note: Zhihu uses a http://link.zhihu.com?target=https%3A//example.org URL format
+        so we need to remove the redirection.
+        :param el:
+        :param text:
+        :return:
+        """
         href = el.get('href')
+        url = urlparse(href)
+        if url.netloc == "link.zhihu.com":
+            # we need to remove redirection
+            queries = url.query.split('&')
+            for query in queries:
+                if query.startswith("target="):
+                    target = query[7:]
+                    href = unquote(target)
+                    break
         title = el.get('title')
-        if self.options['autolinks'] and text == href and not title:
-            # Shortcut syntax
-            return '<%s>' % href
+        # if self.options['autolinks'] and text == href and not title:
+        #     # Shortcut syntax
+        #     return '<%s>' % href
         title_part = ' "%s"' % title.replace('"', r'\"') if title else ''
         return '[%s](%s%s)' % (text or '', href, title_part) if href else text or ''
 
@@ -223,8 +245,16 @@ class MarkdownConverter(object):
         return '[![%s](%s%s)](%s)' % (alt, relative_src, title_part, src)
 
     def convert_code(self, el, text):
-        # TODO: language tag detection
-        return '```\n' + text.strip() + '\n```\n'
+        language = ''
+        classes = el.attrs.get('class', [])
+        for cls in classes:
+            if cls.startswith("language-"):
+                language = cls[9:]
+                if language in language_tag_mapping:
+                    language = language_tag_mapping[language]
+                logger.debug("Got language tag %s, transformed to %s", cls, language)
+                break
+        return '```' + language + '\n' + text + '\n```\n'
 
 
 def markdownify(html, dst, **options):

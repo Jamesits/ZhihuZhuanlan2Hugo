@@ -26,13 +26,18 @@ def get_article(id: int) -> typing.Dict:
     return r.json()
 
 
-def articles(slug: str):
+def articles(slug: str) -> (typing.Dict, typing.Dict):
+    """
+    An iterator to get all articles.
+    :param slug: column slug
+    :return: (article_metadata, article_content), all is dict
+    """
     start = 0
     limit = 10
     while True:
         article_list = get_column_article_list(slug, limit, start)
         for article in article_list["data"]:
-            yield get_article(int(article["id"]))
+            yield article, get_article(int(article["id"]))
         if article_list["paging"]["is_end"]:
             break
         start += limit

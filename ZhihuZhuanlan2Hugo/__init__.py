@@ -1,3 +1,4 @@
+import json
 import logging
 from distutils.dir_util import copy_tree
 
@@ -21,8 +22,13 @@ def generate_markdown(path: str, front_matter: object, content: str = "") -> Non
         f.write("\n")
 
 
-# Convert a column to a content folder. Assume the destination folder exists.
 def convert(column: str, destination_folder_path: str) -> None:
+    """
+    Convert a column to a content folder.
+    :param column: column slug
+    :param destination_folder_path: path to a folder (assume the destination folder exists)
+    :return: None
+    """
     logger.info("Start crawling %s to %s", column, destination_folder_path)
 
     # get column info
@@ -36,13 +42,15 @@ def convert(column: str, destination_folder_path: str) -> None:
     generate_markdown(os.path.join(destination_folder_path, "_index.md"), index_metadata)
 
     # get individual articles
-    for article in api.articles(column):
+    for article_metadata, article in api.articles(column):
         pid = article["id"]
         logger.info("Downloading article #%d %s - %s", pid, article["title"], article["author"]["name"])
         article_base_dir = os.path.join(destination_folder_path, str(pid))
         os.makedirs(article_base_dir, exist_ok=True)
         # save a copy of the original response
-        save_file(article, os.path.join(article_base_dir, "article.json"))
+        save_file(json.dumps(article_metadata, ensure_ascii=False),
+                  os.path.join(article_base_dir, "article_metadata.json"))
+        save_file(json.dumps(article, ensure_ascii=False), os.path.join(article_base_dir, "article.json"))
         # save the transformed document
         generate_markdown(os.path.join(article_base_dir, "index.md"), {
             # official
