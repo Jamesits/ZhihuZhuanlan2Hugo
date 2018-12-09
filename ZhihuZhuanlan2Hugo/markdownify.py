@@ -242,7 +242,7 @@ class MarkdownConverter(object):
             logger.info("Downloading image %s", src)
             relative_src = "./" + retry(download_file, 3, src, self.dst)
 
-        return '[![%s](%s%s)](%s)' % (alt, relative_src, title_part, src)
+        return '[![%s](%s%s)](%s)\n' % (alt, relative_src, title_part, src)
 
     def convert_code(self, el, text):
         language = ''

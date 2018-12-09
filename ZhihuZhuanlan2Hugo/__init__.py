@@ -82,3 +82,5 @@ def main(*args) -> None:
         dst_dir = os.path.join(dst_base, "content", col)
         os.makedirs(dst_dir, exist_ok=True)
         convert(col, dst_dir)
+
+    logger.info("Download finished")
