@@ -3,9 +3,10 @@ import typing
 from datetime import datetime
 
 import requests
+import shutil
 
 user_agent = "ZhihuZhuanlan2Hugo.py (+https://github.com/Jamesits/ZhihuZhuanlan2Hugo"
-
+logger = logging.getLogger(__name__)
 
 def retry(func: callable, retry_times: int, *args, **kwargs) -> typing.Any:
     count = retry_times
@@ -25,13 +26,17 @@ def convert_time(timestamp: int) -> str:
 
 def download_file(url: str, dst: str) -> str:
     filename = url.split("/")[-1]
+    temp_filename = filename + ".part"
+    if os.path.exists(os.path.join(dst, filename)):
+        logger.debug("File %s exists, skipping", filename)
     r = requests.get(url, headers={
         'User-Agent': user_agent,
     }, stream=True)
     if r.status_code == 200:
-        with open(os.path.join(dst, filename), 'wb') as f:
+        with open(os.path.join(dst, temp_filename), 'wb') as f:
             for chunk in r:
                 f.write(chunk)
+    shutil.move(os.path.join(dst, temp_filename), os.path.join(dst, filename))
     return filename
 
 
