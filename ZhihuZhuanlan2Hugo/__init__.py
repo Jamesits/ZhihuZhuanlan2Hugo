@@ -130,6 +130,7 @@ def convert(column: str, destination_folder_path: str) -> None:
         # custom
         "article_count": j["articles_count"],
         "follower_count": j["followers"],
+        "url_token": j["url_token"],
 
     }
     if j["image_url"] != "":
