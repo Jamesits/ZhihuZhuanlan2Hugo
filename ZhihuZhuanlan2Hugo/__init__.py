@@ -115,6 +115,8 @@ def convert(column: str, destination_folder_path: str) -> None:
     # get column info
     logger.debug("Getting metadata...")
     j = api.get_column_metadata(column)
+    save_file(json.dumps(j, ensure_ascii=False),
+              os.path.join(destination_folder_path, "column_metadata.json"))
     index_metadata = {
         # official
         "title": j["title"],
@@ -178,12 +180,12 @@ def main(*args) -> None:
         logger.fatal("Too few arguments")
 
     src_list = args[1:-1]
-    src_template = "./site_template"
     dst_base = args[-1]
 
     # generate site skeleton
-    logger.info("Copying site template...")
-    copy_tree(src_template, dst_base)
+    # src_template = "./site_template"
+    # logger.info("Copying site template...")
+    # copy_tree(src_template, dst_base)
     # download files
     for col in src_list:
         dst_dir = os.path.join(dst_base, "content", col)
