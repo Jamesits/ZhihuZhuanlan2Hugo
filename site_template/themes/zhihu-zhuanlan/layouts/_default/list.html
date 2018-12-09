@@ -1,5 +1,17 @@
 {{ partial "header" . }}
 {{ partial "nav" . }}
+<link rel="stylesheet" href="/assets/list.css">
+<!-- Top bar -->
+<header class="nav-container">
+    <div class="nav">
+        <div class="left">
+            <h1 class="site-icon">
+                <a href="{{ .Site.BaseURL }}/">逼乎</a>
+            </h1>
+        </div>
+    </div>
+</header>
+
 <div class="container">
   <section class="section">
       {{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
