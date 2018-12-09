@@ -11,7 +11,7 @@
         <img src="{{ .Params.current_column.image_url }}" />
         <div class="column-title">
             <p>发布于</p>
-            <a href="{{ .Site.BaseURL }}/">
+            <a href="{{ .Params.current_column.url }}/">
                 <h1>{{ .Params.current_column.title }}</h1>
             </a>
             
@@ -20,7 +20,7 @@
 </div>
 </header>
 <!-- Article -->
-<article class="mw7 center">
+<article>
     <!-- Top metadata -->
     <section>
         <!-- Title image -->

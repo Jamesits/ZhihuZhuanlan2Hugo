@@ -95,6 +95,11 @@ a:hover {
   text-decoration: underline;
 }
 
+article {
+  width: 690px;
+  margin: auto;
+}
+
 article h1 {
   font-size: 1.5rem;
   font-weight: 600;
@@ -147,6 +152,7 @@ article .content ul, article .content ol {
   color: #444;
   font-size: 15px;
   line-height: 1.1;
+  margin-bottom: 0;
 }
 
 .people p {
@@ -158,7 +164,7 @@ article .content ul, article .content ol {
 }
 
 .meta {
-  margin-top: 14px;
+  margin: 32px auto;
   font-size: 14px;
   color: #8590a6;
 }
@@ -187,6 +193,7 @@ article .content ul, article .content ol {
   border-bottom-style: solid;
   border-width: 1px;
   padding-bottom: 12px;
+  margin-top: 32px;
 }
 
 .column-list ul {
