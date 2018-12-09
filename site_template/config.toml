@@ -1,6 +1,6 @@
-languageCode = "zh-cn"
+languageCode = "zh-CN"
 title = "My New Hugo Site"
-theme = "hugo-now"
+theme = "zhihu-zhuanlan"
 enableEmoji = false
 relativeURLs = true
 

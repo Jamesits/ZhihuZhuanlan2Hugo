@@ -44,7 +44,7 @@ class MarkdownConverter(object):
         strip = None
         convert = None
         autolinks = True
-        heading_style = UNDERLINED
+        heading_style = ATX
         bullets = '*+-'  # An iterable of bullet types.
 
     class Options(DefaultOptions):
@@ -171,7 +171,7 @@ class MarkdownConverter(object):
         hashes = '#' * n
         if style == ATX_CLOSED:
             return '%s %s %s\n\n' % (hashes, text, hashes)
-        return '%s %s\n\n' % (hashes, text)
+        return '\n%s %s\n\n' % (hashes, text)
 
     def convert_i(self, el, text):
         return self.convert_em(el, text)

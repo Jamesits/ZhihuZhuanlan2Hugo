@@ -22,7 +22,7 @@ def convert_time(timestamp: int) -> str:
     return datetime.fromtimestamp(timestamp).isoformat()
 
 
-def download_file(url: str, dst: str) -> None:
+def download_file(url: str, dst: str) -> str:
     filename = url.split("/")[-1]
     r = requests.get(url, headers={
         'User-Agent': user_agent,
