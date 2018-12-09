@@ -9,13 +9,14 @@ user_agent = "ZhihuZhuanlan2Hugo.py (+https://github.com/Jamesits/ZhihuZhuanlan2
 
 def retry(func: callable, retry_times: int, *args, **kwargs) -> typing.Any:
     count = retry_times
-    e = None
+    ex = None
     while count > 0:
         try:
             return func(*args, **kwargs)
         except Exception as e:
+            ex = e
             count -= 1
-    raise e
+    raise ex
 
 
 def convert_time(timestamp: int) -> str:
