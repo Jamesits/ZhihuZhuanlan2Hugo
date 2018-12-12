@@ -115,7 +115,7 @@ def convert(column: str, destination_folder_path: str) -> None:
     # get column info
     logger.debug("Getting metadata...")
     j = api.get_column_metadata(column)
-    save_file(json.dumps(j, ensure_ascii=False),
+    save_file(json.dumps(j, ensure_ascii=False, indent=4, sort_keys=True),
               os.path.join(destination_folder_path, "column_metadata.json"))
     index_metadata = {
         # official
@@ -144,9 +144,9 @@ def convert(column: str, destination_folder_path: str) -> None:
         article_base_dir = os.path.join(destination_folder_path, str(pid))
         os.makedirs(article_base_dir, exist_ok=True)
         # save a copy of the original response
-        save_file(json.dumps(article_metadata, ensure_ascii=False),
+        save_file(json.dumps(article_metadata, ensure_ascii=False, indent=4, sort_keys=True),
                   os.path.join(article_base_dir, "article_metadata.json"))
-        save_file(json.dumps(article, ensure_ascii=False), os.path.join(article_base_dir, "article.json"))
+        save_file(json.dumps(article, ensure_ascii=False, indent=4, sort_keys=True), os.path.join(article_base_dir, "article.json"))
         document_meta = {
             # official
             "title": article["title"],
