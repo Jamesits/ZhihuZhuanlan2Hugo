@@ -2,9 +2,9 @@
 
 Convert Zhihu Zhuanlan (知乎专栏) to Hugo static site.
 
-Daily CI: [![Build status](https://dev.azure.com/nekomimiswitch/Zhihu%20Zhuanlan/_apis/build/status/Zhihu%20Zhuanlan%20Backup%20Task)](https://dev.azure.com/nekomimiswitch/Zhihu%20Zhuanlan/_build/latest?definitionId=36)
-
-Sample site: https://zhuanlan.swineson.me/
+* Daily CI: [![Build status](https://dev.azure.com/nekomimiswitch/Zhihu%20Zhuanlan/_apis/build/status/Zhihu%20Zhuanlan%20Backup%20Task)](https://dev.azure.com/nekomimiswitch/Zhihu%20Zhuanlan/_build/latest?definitionId=36)
+* Sample site: https://zhuanlan.swineson.me/
+* The script we use to automate crawling for reference: [azure-pipeline.sh](https://dev.azure.com/nekomimiswitch/Zhihu%20Zhuanlan/_git/site-skeleton?path=%2Fazure-pipeline.sh)
 
 ## Usage
 
