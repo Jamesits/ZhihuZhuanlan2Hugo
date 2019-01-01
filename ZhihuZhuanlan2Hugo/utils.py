@@ -30,6 +30,7 @@ def download_file(url: str, dst: str) -> str:
     temp_filename = filename + ".part"
     if os.path.exists(os.path.join(dst, filename)):
         logger.debug("File %s exists, skipping", filename)
+        return filename
     r = requests.get(url, headers={
         'User-Agent': user_agent,
     }, stream=True)
